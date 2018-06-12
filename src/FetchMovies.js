@@ -26,7 +26,6 @@ class OMDApi extends React.Component {
         
         // const movieData = [];
         if (data.Response === "True") {
-          // this.props.getDataId(data.imdbID);
           this.props.addData(data);
           this.setState({
             data: data,

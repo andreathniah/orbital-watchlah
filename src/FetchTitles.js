@@ -37,7 +37,6 @@ class FetchTitles extends React.Component {
   }
 
   addData = data =>{
-    // this.getDataId();
     // copy the state item
     const databox = { ...this.state.databox };
     // create new item to existing items
@@ -46,19 +45,16 @@ class FetchTitles extends React.Component {
     this.setState({ databox: databox });
   }
 
-  getDataId = (id) => {
-    console.log(id);
-  }
 
   render() {
     var titleItem = this.state.titles.map(name =>{
       return (
-        // <FetchMovies 
-        //   key={name}
-        //   name={name}
-        //   addData={this.addData}
-        // />
-       <div>{name}</div>
+        <FetchMovies 
+          key={name}
+          name={name}
+          addData={this.addData}
+        />
+      //  <div>{name}</div>
       );
     })
         return(
