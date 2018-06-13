@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "watchlah",
   "version": "0.1.0",
   "private": true,
@@ -9,6 +10,19 @@
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
   },
+=======
+  "name": "new",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "react-scripts": "1.1.4"
+  },
+  "devDependencies": {},
+>>>>>>> 6cdd2be69dfb1f58ea4068cdf5a5c3e7760cf202
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
