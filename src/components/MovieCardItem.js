@@ -4,14 +4,14 @@ import RatingItem from "./RatingItem";
 class MovieCardItem extends React.Component {
   render() {
     const { Plot, Poster, Ratings, Released, Title } = this.props.details;
-
-    // const ratingItem = Object.keys(Ratings).map(id => {
-    //   if (Ratings[id] === null) console.log("null")
-    //   console.log(Ratings[id])
-    //   // return (
-    //   //   <RatingItem key={this.props.index} rating={Ratings[id]}/>
-    //   // );
-    // })
+    if (typeof Ratings !== "undefined") {
+      var ratingItem = Object.keys(Ratings).map(id => {
+        const uniqueId = "" + this.props.index + "-" + id;
+        return (
+          <RatingItem key={uniqueId} ratings={Ratings[id]}/>
+        );
+      });
+    }
 
     return (
       <div id="movie-card-item">
@@ -19,7 +19,7 @@ class MovieCardItem extends React.Component {
         <div>{Title}</div>
         <div>{Plot}</div>
         <div>{Released}</div>
-        {/* {ratingItem} */}
+        {ratingItem}
       </div>
     );
   }

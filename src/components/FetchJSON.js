@@ -1,7 +1,7 @@
 import React from "react";
 import FetchTitles from "./FetchTitles";
-import base from "./base";
-import { firebaseApp } from "./base";
+import base from "../base";
+import { firebaseApp } from "../base";
 
 
 class FetchJSON extends React.Component {

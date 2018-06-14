@@ -1,25 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-
-import FetchJSON from "./FetchJSON";
-import MovieCard from "./MovieCard"
-
+import Router from "./components/Router";
 import "./styles.css";
 
-class App extends React.Component {
-  state = {
-    scrapeStatus: false
-  }
-
-  render() {
-    return(
-      <div>
-        <FetchJSON />
-        <MovieCard />
-      </div>
-
-    );
-  }
-}
-
-render(<App/ >, document.getElementById("root"));
+render(<Router />, document.getElementById("root"));

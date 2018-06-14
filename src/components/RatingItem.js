@@ -2,8 +2,11 @@ import React from "react";
 
 class RatingItem extends React.Component {
   render() {
+    const { Source, Value } = this.props.ratings;
     return (
-      <div>rating item</div>
+      <div>
+        <span>{Source}: </span><span>{Value}</span>
+      </div>
     );
   }
 }

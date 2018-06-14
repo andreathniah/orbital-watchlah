@@ -1,5 +1,5 @@
 import React from "react";
-import base from "./base";
+import base from "../base";
 import MovieCardItem from "./MovieCardItem";
 
 class MovieCard extends React.Component {
