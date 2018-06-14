@@ -1,10 +1,7 @@
 import React from "react";
 
-class OMDApi extends React.Component {
-  state = {
-    showComponent: false,
-    data: []
-  }
+class FetchMovies extends React.Component {
+
   componentDidMount() {
     this.fetchData();
   }
@@ -14,7 +11,7 @@ class OMDApi extends React.Component {
     const title = str.replace(/\s+/g, "+").toLowerCase();
     const APIKey = "d59b5d15";
     const year = 2018;
-    const requestURL = "omdbapi.com/?t=" + str + "&y=" + year + "&plot=full&apikey=" + APIKey;
+    const requestURL = "omdbapi.com/?t=" + title + "&y=" + year + "&plot=full&apikey=" + APIKey;
 
     fetch("https://cors-anywhere.herokuapp.com/" + requestURL)
       .then(results => {
@@ -23,10 +20,6 @@ class OMDApi extends React.Component {
       .then(data => {
         if (data.Response === "True") {
           this.props.addData(data);
-          this.setState({
-            data: data,
-            showComponent: true
-          });
         }
       })
       .catch(error => console.log("parsing failed ", error));
@@ -35,11 +28,11 @@ class OMDApi extends React.Component {
   render() {
     return(
       <div>
-        {this.state.showComponent ? console.log("retrieving " + this.state.data.Title) : null}
+        {null}
       </div>
 
     );
   }
 }
 
-export default OMDApi;
+export default FetchMovies;

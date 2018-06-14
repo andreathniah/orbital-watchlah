@@ -8,12 +8,10 @@ During casual gatherings, choosing movies often prove to be a chore – especial
 
 ## Authors
 
-Contributors names and contact info
-
 * Andrea Thniah [@andreathniah](http://www.andreathniah.com/)
 * Bai Yunwei [@baiyunwei1996](https://github.com/baiyunwei1996)
 
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the MIT License.

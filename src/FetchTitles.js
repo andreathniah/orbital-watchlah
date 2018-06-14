@@ -16,7 +16,7 @@ class FetchTitles extends React.Component {
         return results.text();
       })
       .then(data => {
-        console.log("Fetching movie titles")
+        console.log("Fetching movie titles...")
         const parser = new DOMParser();
         const httpDoc = parser.parseFromString(data, "text/html");
         const movieDDL = httpDoc.getElementsByClassName("movie-id")[1].getElementsByTagName("li");
@@ -30,9 +30,9 @@ class FetchTitles extends React.Component {
         this.setState({
           titles: movieTitles
         });
-        console.log("Titles added to state")
+        console.log("Scraping completed.")
       })
-      .catch(error => console.log("parsing failed ", error));
+      .catch(error => console.log("Scraping failed due to ", error));
   }
 
   render() {
@@ -43,7 +43,6 @@ class FetchTitles extends React.Component {
           name={name}
           addData={this.props.addData}
         />
-       // <div>{name}</div>
       );
     })
 
