@@ -13,6 +13,7 @@ class FetchTitles extends React.Component {
   fetchTitles = () => {
     fetch("https://cors-anywhere.herokuapp.com/incinemas.sg/showtimes.aspx")
       .then(results => {
+        console.log("backup scraping starting ")
         return results.text();
       })
       .then(data => {
@@ -32,7 +33,10 @@ class FetchTitles extends React.Component {
         });
         console.log("Scraping completed.")
       })
-      .catch(error => console.log("Scraping failed due to ", error));
+      .catch(error => {
+        console.log("Scraping failed due to ")
+        console.log(error)
+    });
   }
 
   render() {

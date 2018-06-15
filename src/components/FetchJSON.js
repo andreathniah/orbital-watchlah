@@ -15,8 +15,8 @@ class FetchJSON extends React.Component {
 
   componentDidMount() {
     const dateObj = new Date();
-    // const todayDate = "" + dateObj.getUTCDate() + dateObj.getUTCMonth() + dateObj.getUTCFullYear();
-    const todayDate = "1632018"
+    const todayDate = "" + dateObj.getUTCDate() + dateObj.getUTCMonth() + dateObj.getUTCFullYear();
+    // const todayDate = "1632018"
 
     const database = firebaseApp.database().ref("moviesJSON");
 
@@ -92,13 +92,13 @@ class FetchJSON extends React.Component {
   render() {
     return(
       <div>
-        {this.state.initiateScrape && this.state.initiateUpdate ? <FetchTitles
+        {this.state.initiateScrape && this.state.initiateUpdate ? <FetchTitlesBackup
           id="FetchTitles"
           addData={this.addData}
           createGlobalList={this.updateGlobalList}
         /> : null }
 
-        {this.state.initiateScrape ? <FetchTitles
+        {this.state.initiateScrape ? <FetchTitlesBackup
           id="FetchTitles"
           addData={this.addData}
           createGlobalList={this.createGlobalList}

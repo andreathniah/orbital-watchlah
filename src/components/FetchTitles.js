@@ -34,7 +34,8 @@ class FetchTitles extends React.Component {
         console.log("Scraping completed.")
       })
       .catch(error => {
-        console.log("Scraping failed due to ", error);
+        console.log("Scraping failed due to ");
+        console.log(error);
         console.log("Switching over to backup");
         <FetchTitlesBackup />
       });
