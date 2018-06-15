@@ -1,6 +1,5 @@
 import React from "react";
 import FetchMovies from "./FetchMovies"
-import FetchTitlesBackup from "./FetchTitlesBackup"
 
 class FetchTitles extends React.Component {
   state = {
@@ -12,7 +11,7 @@ class FetchTitles extends React.Component {
   }
 
   fetchTitles = () => {
-    fetch("https://cors-anywhere.herokuapp.com/insing.com/movies/now-showing/")
+    fetch("https://cors-anywhere.herokuapp.com/incinemas.sg/showtimes.aspx")
       .then(results => {
         return results.text();
       })
@@ -20,7 +19,7 @@ class FetchTitles extends React.Component {
         console.log("Fetching movie titles...")
         const parser = new DOMParser();
         const httpDoc = parser.parseFromString(data, "text/html");
-        const movieDDL = httpDoc.getElementsByClassName("movie-id")[1].getElementsByTagName("li");
+        const movieDDL = httpDoc.getElementById("ddlMovie");
         const movieTitles = [];
         for (var i = 1; i < movieDDL.length; i++) {
           movieTitles.push(movieDDL[i].innerHTML);
@@ -33,11 +32,7 @@ class FetchTitles extends React.Component {
         });
         console.log("Scraping completed.")
       })
-      .catch(error => {
-        console.log("Scraping failed due to ", error);
-        console.log("Switching over to backup");
-        <FetchTitlesBackup />
-      });
+      .catch(error => console.log("Scraping failed due to ", error));
   }
 
   render() {
@@ -51,6 +46,7 @@ class FetchTitles extends React.Component {
         />
       );
     })
+
 
     return(
       <div>{titleItem}</div>

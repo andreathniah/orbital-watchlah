@@ -1,18 +1,22 @@
 import React from "react";
 import FetchTitles from "./FetchTitles";
+import FetchTitlesBackup from "./FetchTitlesBackup";
+
 import base from "../base";
 import { firebaseApp } from "../base";
-
 
 class FetchJSON extends React.Component {
   state = {
     initiateScrape: false,
-    databox: []
+    initiateUpdate: false,
+    databox: [],
+    globalbox: []
   }
 
   componentDidMount() {
     const dateObj = new Date();
-    const todayDate = "" + dateObj.getUTCDate() + dateObj.getUTCMonth() + dateObj.getUTCFullYear();
+    // const todayDate = "" + dateObj.getUTCDate() + dateObj.getUTCMonth() + dateObj.getUTCFullYear();
+    const todayDate = "1632018"
 
     const database = firebaseApp.database().ref("moviesJSON");
 
@@ -23,16 +27,27 @@ class FetchJSON extends React.Component {
           else {
             console.log("old data found, deleting and re-scraping...");
             database.remove();
-            this.setState({ initiateScrape: true });
+            this.setState({
+              initiateScrape: true,
+              initiateUpdate: true
+            });
           }
         })
       }
-      else this.setState({ initiateScrape: true });
+      else {
+        console.log("scraping in progress...")
+        this.setState({ initiateScrape: true });
+      }
     })
 
     this.ref = base.syncState(`moviesJSON/${todayDate}`, {
       context: this,
       state: "databox"
+    });
+
+    this.ref = base.syncState(`globalList/`, {
+      context: this,
+      state: "globalbox"
     });
   }
 
@@ -40,22 +55,55 @@ class FetchJSON extends React.Component {
     base.removeBinding(this.ref);
   }
 
-  addData = data =>{
-    // copy the state item
+  addData = data => {
     const databox = { ...this.state.databox };
-    // create new item to existing items
     databox[data.imdbID] = data;
-    // update state of items
     this.setState({
-      databox: databox,
-      initiateScrape: true
-      });
+      databox: databox
+    });
+  }
+
+  createGlobalList = data => {
+    const globalbox = { ...this.state.globalbox };
+    globalbox[data.imdbID] = {
+      Title: data.Title,
+      WatchVote: 0,
+      UpdateStatus: false
+    }
+    this.setState({ globalbox: globalbox });
+  }
+
+  updateGlobalList = data => {
+    const globalbox = { ...this.state.globalbox };
+
+    if (globalbox.hasOwnProperty(data.imdbID)) {
+      console.log("updating watch-votes...");
+      const updatedVotes = globalbox[data.imdbID].WatchVote + 1;
+
+      globalbox[data.imdbID] = {
+        Title: data.Title,
+        WatchVote: updatedVotes,
+        UpdateStatus: true
+      }
+    }
+    this.setState({ globalbox: globalbox });
   }
 
   render() {
     return(
       <div>
-        {this.state.initiateScrape ? <FetchTitles id="FetchTitles" addData={this.addData} /> : null}
+        {this.state.initiateScrape && this.state.initiateUpdate ? <FetchTitles
+          id="FetchTitles"
+          addData={this.addData}
+          createGlobalList={this.updateGlobalList}
+        /> : null }
+
+        {this.state.initiateScrape ? <FetchTitles
+          id="FetchTitles"
+          addData={this.addData}
+          createGlobalList={this.createGlobalList}
+        /> : null}
+
       </div>
     );
   }

@@ -20,6 +20,7 @@ class FetchMovies extends React.Component {
       .then(data => {
         if (data.Response === "True") {
           this.props.addData(data);
+          this.props.createGlobalList(data);
         }
       })
       .catch(error => console.log("parsing failed ", error));
