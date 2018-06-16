@@ -5,7 +5,8 @@ import LeaderboardList from "./LeaderboardList";
 class Leaderboard extends React.Component {
   state = {
     globalbox: [],
-    start: false
+    start: false,
+    roombox: [],
   };
 
   componentDidMount() {
@@ -20,17 +21,39 @@ class Leaderboard extends React.Component {
     });
   }
 
-  deleteStuff = (globalbox) => {
+  deleteStuff = globalbox => {
     Object
-      .entries(globalbox)
-      .filter(([key, val]) => !val.UpdateStatus)
-      .map(([key, val]) => key)
-      .forEach(key => {
-        console.log("deleting " + key)
-        globalbox[key] = null
-      });
+    .entries(globalbox)
+    .filter(([key, val]) => !val.UpdateStatus)
+    .map(([key, val]) => key)
+    .forEach(key => {
+      console.log("deleting " + key)
+      globalbox[key] = null
+    });
     this.setState({ globalbox: globalbox });
     this.forceUpdate();
+  }
+
+  addToBox = (item, index) => {
+    const roombox = { ...this.state.roombox };
+    roombox[index] = item;
+    this.setState({ roombox: roombox })
+  }
+
+  removeFromBox = index => {
+    console.log("removing " + index );
+    const update = {};
+    const roombox = { ...this.state.roombox };
+
+    const render = Object
+    .entries(roombox)
+    .filter(([key, val]) => key !== index)
+    .map(([key, val]) => [key, val])
+
+    render.map(([key, val]) => {
+      update[key] = val
+    })
+    this.setState({ roombox: update })
   }
 
   render() {
@@ -41,10 +64,13 @@ class Leaderboard extends React.Component {
           key={id}
           index={id}
           details={globalbox[id]}
+          addToBox={this.addToBox}
+          removeFromBox={this.removeFromBox}
         />
       );
     })
 
+    // console.log(this.props.match.params.roomId)
     return(
       <div>
         {this.state.start ? leaderboardItem : null}
