@@ -9,6 +9,7 @@ class FetchJSON extends React.Component {
   state = {
     initiateScrape: false,
     initiateUpdate: false,
+    initiateFlip: false,
     databox: [],
     globalbox: []
   }
@@ -23,7 +24,10 @@ class FetchJSON extends React.Component {
     database.once("value", (snapshot) => {
       if (snapshot.exists()) {
         database.child(todayDate).once("value", (snapshot) =>{
-          if (snapshot.exists()) console.log("retrieving data from database...")
+          if (snapshot.exists()) {
+            console.log("retrieving data from database...");
+            this.setState({ initiateFlip: true });
+          }
           else {
             console.log("old data found, deleting and re-scraping...");
             database.remove();
@@ -90,18 +94,25 @@ class FetchJSON extends React.Component {
   }
 
   render() {
+    const { initiateScrape, initiateUpdate, initiateFlip } = this.state;
     return(
       <div>
-        {this.state.initiateScrape && this.state.initiateUpdate ? <FetchTitlesBackup
+        {(initiateScrape && initiateUpdate && initiateFlip===false) ? <FetchTitles
           id="FetchTitles"
           addData={this.addData}
           createGlobalList={this.updateGlobalList}
         /> : null }
 
-        {this.state.initiateScrape ? <FetchTitlesBackup
+        {(initiateScrape && initiateFlip===false) ? <FetchTitles
           id="FetchTitles"
           addData={this.addData}
           createGlobalList={this.createGlobalList}
+        /> : null}
+
+        {initiateFlip ? <FetchTitles
+          id="FetchTitles"
+          addData={this.addData}
+          createGlobalList={this.updateGlobalList}
         /> : null}
 
       </div>

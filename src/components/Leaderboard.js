@@ -34,9 +34,20 @@ class Leaderboard extends React.Component {
   }
 
   render() {
+    const { globalbox } = this.state;
+    const leaderboardItem = Object.keys(globalbox).map(id => {
+      return (
+        <LeaderboardList
+          key={id}
+          index={id}
+          details={globalbox[id]}
+        />
+      );
+    })
+
     return(
       <div>
-        {this.state.start ? <LeaderboardList details={this.state.globalbox}/> : null}
+        {this.state.start ? leaderboardItem : null}
       </div>
 
     );

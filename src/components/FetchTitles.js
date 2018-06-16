@@ -1,6 +1,7 @@
 import React from "react";
 import FetchMovies from "./FetchMovies"
 import FetchTitlesBackup from "./FetchTitlesBackup"
+import { proxyURL } from "../secret"
 
 class FetchTitles extends React.Component {
   state = {
@@ -12,7 +13,9 @@ class FetchTitles extends React.Component {
   }
 
   fetchTitles = () => {
-    fetch("https://cors-anywhere.herokuapp.com/insing.com/movies/now-showing/")
+    const requestedURL = "insing.com/movies/now-showing/";
+
+    fetch(proxyURL + requestedURL)
       .then(results => {
         return results.text();
       })

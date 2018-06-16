@@ -1,4 +1,6 @@
 import React from "react";
+import { omdKey } from "../secret";
+import { proxyURL } from "../secret";
 
 class FetchMovies extends React.Component {
 
@@ -9,11 +11,11 @@ class FetchMovies extends React.Component {
   fetchData = () => {
     const str = this.props.name;
     const title = str.replace(/\s+/g, "+").toLowerCase();
-    const APIKey = "d59b5d15";
+    const APIKey = omdKey;
     const year = 2018;
-    const requestURL = "omdbapi.com/?t=" + title + "&y=" + year + "&plot=full&apikey=" + APIKey;
+    const requestedURL = "omdbapi.com/?t=" + title + "&y=" + year + "&plot=full&apikey=" + APIKey;
 
-    fetch("https://cors-anywhere.herokuapp.com/" + requestURL)
+    fetch(proxyURL + requestedURL)
       .then(results => {
         return results.json();
       })

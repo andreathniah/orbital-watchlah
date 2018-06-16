@@ -7,6 +7,7 @@ class LeaderboardList extends React.Component {
     return(
       <div>
         LeaderboardList
+        {this.props.details.Title}
       </div>
     );
   }
