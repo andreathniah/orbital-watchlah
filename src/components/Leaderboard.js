@@ -56,6 +56,16 @@ class Leaderboard extends React.Component {
     this.setState({ roombox: update })
   }
 
+  editGlobalVote = (index, value) => {
+    const globalbox = { ...this.state.globalbox };
+    globalbox[index] = {
+      Title: globalbox[index].Title,
+      UpdateStatus: globalbox[index].UpdateStatus,
+      WatchVote: value
+    }
+    this.setState({ globalbox: globalbox })
+  }
+
   render() {
     const { globalbox } = this.state;
     const leaderboardItem = Object.keys(globalbox).map(id => {
@@ -66,6 +76,7 @@ class Leaderboard extends React.Component {
           details={globalbox[id]}
           addToBox={this.addToBox}
           removeFromBox={this.removeFromBox}
+          editGlobalVote={this.editGlobalVote}
         />
       );
     })

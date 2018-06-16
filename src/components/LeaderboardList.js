@@ -1,16 +1,14 @@
 import React from "react";
 import PollStatus from "./PollStatus";
+import ItemVote from "./ItemVote";
 
 class LeaderboardList extends React.Component {
-  state = {
-    votes: 0
-  }
 
   addToPoll = index => {
     console.log("adding " + index );
     const item = {
       Title: this.props.details.Title,
-      Votes: this.state.votes
+      Votes: 0 // this vote is for customised poll later
     }
     this.props.addToBox(item, index);
   }
@@ -23,6 +21,11 @@ class LeaderboardList extends React.Component {
           index={this.props.index}
           addToPoll={this.addToPoll}
           removeFromBox={this.props.removeFromBox}
+        />
+        <ItemVote
+          index={this.props.index}
+          details={this.props.details}
+          editGlobalVote={this.props.editGlobalVote}
         />
         <br/>
       </div>
