@@ -1,6 +1,10 @@
 import React from "react";
 import base from "../base";
+import { Switch, Route } from "react-router-dom";
+
 import LeaderboardList from "./LeaderboardList";
+import MovieCard from "./MovieCard";
+import PollList from "./PollList";
 
 class Leaderboard extends React.Component {
   state = {
@@ -18,6 +22,11 @@ class Leaderboard extends React.Component {
         console.log("loading completed")
         this.setState({ start: true })
       }
+    });
+
+    this.ref = base.syncState(`rooms/${this.props.match.params.roomId}`, {
+      context: this,
+      state: "roombox"
     });
   }
 
@@ -42,18 +51,18 @@ class Leaderboard extends React.Component {
 
   removeFromBox = index => {
     console.log("removing " + index );
-    const update = {};
     const roombox = { ...this.state.roombox };
 
-    const render = Object
+    Object
     .entries(roombox)
-    .filter(([key, val]) => key !== index)
-    .map(([key, val]) => [key, val])
-
-    render.map(([key, val]) => {
-      update[key] = val
-    })
-    this.setState({ roombox: update })
+    .filter(([key, val]) => key === index)
+    .map(([key, val]) => key)
+    .forEach(key => {
+      console.log("deleting " + key)
+      roombox[key] = null
+    });
+    this.setState({ roombox: roombox });
+    this.forceUpdate();
   }
 
   editGlobalVote = (index, value) => {
@@ -67,13 +76,16 @@ class Leaderboard extends React.Component {
   }
 
   render() {
-    const { globalbox } = this.state;
+    const { path } = this.props.match;
+    const { globalbox, roombox } = this.state;
+
     const leaderboardItem = Object.keys(globalbox).map(id => {
       return (
         <LeaderboardList
           key={id}
           index={id}
           details={globalbox[id]}
+          roomId={this.props.match.params.roomId}
           addToBox={this.addToBox}
           removeFromBox={this.removeFromBox}
           editGlobalVote={this.editGlobalVote}
@@ -81,9 +93,12 @@ class Leaderboard extends React.Component {
       );
     })
 
-    // console.log(this.props.match.params.roomId)
     return(
       <div>
+        <Switch>
+          <Route path={`${path}/movies`} component={MovieCard} />
+        </Switch>
+        {/* {this.state.start ? <PollList roomId={this.props.match.params.roomId}/> : null} */}
         {this.state.start ? leaderboardItem : null}
       </div>
 

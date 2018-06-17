@@ -21,7 +21,11 @@ class MovieCard extends React.Component {
     // individual movie details card
     const card = Object.keys(this.state.databox).map(id => {
       return (
-        <MovieCardItem key={id} index={id} details={this.state.databox[id]}/>
+        <MovieCardItem
+          key={id}
+          index={id}
+          details={this.state.databox[id]}
+        />
       );
     })
 
