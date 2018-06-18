@@ -16,8 +16,8 @@ class FetchJSON extends React.Component {
 
   componentDidMount() {
     const dateObj = new Date();
-    const todayDate = "" + dateObj.getUTCDate() + dateObj.getUTCMonth() + dateObj.getUTCFullYear();
-    // const todayDate = "1632018"
+    // const todayDate = "" + dateObj.getUTCDate() + dateObj.getUTCMonth() + dateObj.getUTCFullYear();
+    const todayDate = "1632018"
 
     const database = firebaseApp.database().ref("moviesJSON");
 
@@ -40,7 +40,10 @@ class FetchJSON extends React.Component {
       }
       else {
         console.log("scraping in progress...")
-        this.setState({ initiateScrape: true });
+        this.setState({
+          initiateScrape: true,
+          initiateFlip: true
+        });
       }
     })
 
@@ -82,7 +85,7 @@ class FetchJSON extends React.Component {
 
     if (globalbox.hasOwnProperty(data.imdbID)) {
       console.log("updating watch-votes...");
-      const updatedVotes = globalbox[data.imdbID].WatchVote + 1;
+      const updatedVotes = globalbox[data.imdbID].WatchVote;
 
       globalbox[data.imdbID] = {
         Title: data.Title,

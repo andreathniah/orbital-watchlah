@@ -4,6 +4,7 @@ class SidebarItem extends React.Component {
   onClickRemove = () => {
     const { index } = this.props;
     this.props.removeFromList(index);
+    this.props.refresh();
   }
 
   render() {

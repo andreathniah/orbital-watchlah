@@ -1,5 +1,4 @@
 import React from "react";
-import base from "../base";
 import { firebaseApp } from "../base";
 
 
@@ -29,7 +28,7 @@ class PollStatus extends React.Component {
     }
   }
   render() {
-    const status = this.state.status ? "Added to Poll" : "Available to Add"
+    const status = this.state.status ? " - " : " + "
     return(
       <div>
         <button onClick={this.onClickAdd}>{status}</button>

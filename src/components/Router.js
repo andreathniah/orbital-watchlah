@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import RoomPicker from "./RoomPicker";
 import Leaderboard from "./Leaderboard";
-import MovieCard from "./MovieCard";
 import NotFound from "./NotFound";
 
 const Router = () => (

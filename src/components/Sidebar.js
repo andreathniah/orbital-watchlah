@@ -1,6 +1,7 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 import base from "../base";
-import { firebaseApp } from "../base";
+import MovieCard from "./MovieCard";
 import SidebarItem from "./SidebarItem";
 
 class Sidebar extends React.Component {
@@ -30,7 +31,6 @@ class Sidebar extends React.Component {
     });
     this.setState({ roombox: roombox });
     this.forceUpdate();
-    // need to forceUpdate PollStatus also
   }
 
   render() {
@@ -42,15 +42,21 @@ class Sidebar extends React.Component {
           index={id}
           details={roombox[id]}
           removeFromList={this.removeFromList}
+          refresh={this.props.refresh}
         />
       );
     });
 
       return(
         <div id="side-bar">
+          <Switch>
+            <Route path={`${this.props.roomId}/movies`} component={MovieCard} />
+          </Switch>
           <div>Link to popularity page</div>
-          <div>Linnk to movie details</div>
+          <div>Link to movie details</div>
           {item}
+          <br/>
+
         </div>
       );
     }

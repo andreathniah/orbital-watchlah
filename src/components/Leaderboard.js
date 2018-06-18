@@ -1,15 +1,13 @@
 import React from "react";
 import base from "../base";
-import { Switch, Route } from "react-router-dom";
-
 import LeaderboardList from "./LeaderboardList";
-import MovieCard from "./MovieCard";
 import Sidebar from "./Sidebar";
 
 class Leaderboard extends React.Component {
   state = {
     globalbox: [],
     start: false,
+    refresh: false,
     roombox: [],
   };
 
@@ -40,7 +38,6 @@ class Leaderboard extends React.Component {
       globalbox[key] = null
     });
     this.setState({ globalbox: globalbox });
-    // this.forceUpdate();
   }
 
   addToBox = (item, index) => {
@@ -62,7 +59,6 @@ class Leaderboard extends React.Component {
       roombox[key] = null
     });
     this.setState({ roombox: roombox });
-    // this.forceUpdate();
   }
 
   editGlobalVote = (index, value) => {
@@ -75,9 +71,17 @@ class Leaderboard extends React.Component {
     this.setState({ globalbox: globalbox })
   }
 
+  refresh = () => {
+    this.setState(prevState => ({
+      refresh : !prevState.refresh
+    }), () => {
+      this.setState({ state: this.state })
+      console.log(this.state.refresh)
+    })
+  };
+
   render() {
-    const { path } = this.props.match;
-    const { globalbox, roombox } = this.state;
+    const { globalbox } = this.state;
 
     const leaderboardItem = Object.keys(globalbox).map(id => {
       return (
@@ -95,10 +99,10 @@ class Leaderboard extends React.Component {
 
     return(
       <div>
-        <Switch>
-          <Route path={`${path}/movies`} component={MovieCard} />
-        </Switch>
-        <Sidebar roomId={this.props.match.params.roomId}/>
+        <Sidebar
+          roomId={this.props.match.params.roomId}
+          refresh={this.refresh}
+        />
         <div id="main">
           {this.state.start ? leaderboardItem : null}
         </div>

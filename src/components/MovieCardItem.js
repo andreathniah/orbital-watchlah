@@ -15,7 +15,7 @@ class MovieCardItem extends React.Component {
 
     return (
       <div id="movie-card-item">
-        <img src={Poster}/>
+        <img src={Poster} alt={this.props.index}/>
         <div>{Title}</div>
         <div>{Plot}</div>
         <div>{Released}</div>
