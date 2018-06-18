@@ -1,22 +1,20 @@
 import React from "react";
 
 class SidebarItem extends React.Component {
-  onClickRemove = () => {
-    const { index } = this.props;
-    this.props.removeFromList(index);
-    this.props.refresh();
-  }
+	onClickRemove = () => {
+		const { index } = this.props;
+		this.props.removeFromList(index);
+		this.props.refresh();
+	};
 
-  render() {
-    return (
-      <li>
-        {this.props.details.Title}
-        <button onClick={this.onClickRemove}>
-          delete
-        </button>
-      </li>
-    );
-  }
+	render() {
+		return (
+			<li>
+				{this.props.details.Title}
+				<button onClick={this.onClickRemove}>delete</button>
+			</li>
+		);
+	}
 }
 
 export default SidebarItem;

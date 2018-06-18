@@ -3,38 +3,35 @@ import base from "../base";
 import MovieCardItem from "./MovieCardItem";
 
 class MovieCard extends React.Component {
-  state = {
-    databox: []
-  };
+	state = {
+		databox: []
+	};
 
-  componentDidMount() {
-    const dateObj = new Date();
-    const todayDate = "" + dateObj.getUTCDate() + dateObj.getUTCMonth() + dateObj.getUTCFullYear();
+	componentDidMount() {
+		const dateObj = new Date();
+		const todayDate =
+			"" +
+			dateObj.getUTCDate() +
+			dateObj.getUTCMonth() +
+			dateObj.getUTCFullYear();
 
-    this.ref = base.syncState(`moviesJSON/${todayDate}`, {
-      context: this,
-      state: "databox"
-    });
-  }
+		this.ref = base.syncState(`moviesJSON/${todayDate}`, {
+			context: this,
+			state: "databox"
+		});
+	}
 
-  render() {
-    // individual movie details card
-    console.log("in movie card ")
-    const card = Object.keys(this.state.databox).map(id => {
-      return (
-        <MovieCardItem
-          key={id}
-          index={id}
-          details={this.state.databox[id]}
-        />
-      );
-    })
+	render() {
+		// individual movie details card
+		console.log("in movie card ");
+		const card = Object.keys(this.state.databox).map(id => {
+			return (
+				<MovieCardItem key={id} index={id} details={this.state.databox[id]} />
+			);
+		});
 
-    return (
-      <div>{card}</div>
-    );
-  }
+		return <div>{card}</div>;
+	}
 }
-
 
 export default MovieCard;

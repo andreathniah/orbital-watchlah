@@ -1,8 +1,8 @@
 import Rebase from "re-base";
 import firebase from "firebase";
-import { firebaseKey } from "./secret"
+import { firebaseKey } from "./secret";
 
-const firebaseApp = firebase.initializeApp(firebaseKey)
+const firebaseApp = firebase.initializeApp(firebaseKey);
 
 const base = Rebase.createClass(firebaseApp.database());
 

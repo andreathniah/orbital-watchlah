@@ -5,13 +5,13 @@ import Leaderboard from "./Leaderboard";
 import NotFound from "./NotFound";
 
 const Router = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={RoomPicker} />
-      <Route path="/room/:roomId" component={Leaderboard} />
-      <Route component={NotFound} />
-    </Switch>
-  </BrowserRouter>
+	<BrowserRouter>
+		<Switch>
+			<Route exact path="/" component={RoomPicker} />
+			<Route path="/room/:roomId" component={Leaderboard} />
+			<Route component={NotFound} />
+		</Switch>
+	</BrowserRouter>
 );
 
 export default Router;
