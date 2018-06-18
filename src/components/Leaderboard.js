@@ -7,7 +7,7 @@ class Leaderboard extends React.Component {
 	state = {
 		globalbox: [],
 		start: false,
-		refresh: false,
+		refresh: null,
 		roombox: []
 	};
 
@@ -69,10 +69,10 @@ class Leaderboard extends React.Component {
 		this.setState({ globalbox: globalbox });
 	};
 
-	refresh = () => {
+	refresh = index => {
 		this.setState(
 			prevState => ({
-				refresh: !prevState.refresh
+				refresh: index
 			}),
 			() => {
 				this.setState({ state: this.state });
@@ -82,7 +82,7 @@ class Leaderboard extends React.Component {
 	};
 
 	render() {
-		const { globalbox } = this.state;
+		const { globalbox, refresh } = this.state;
 
 		const leaderboardItem = Object.keys(globalbox).map(id => {
 			return (
@@ -90,6 +90,7 @@ class Leaderboard extends React.Component {
 					key={id}
 					index={id}
 					details={globalbox[id]}
+					status={refresh}
 					roomId={this.props.match.params.roomId}
 					addToBox={this.addToBox}
 					removeFromBox={this.removeFromBox}

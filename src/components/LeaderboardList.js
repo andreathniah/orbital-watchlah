@@ -21,6 +21,7 @@ class LeaderboardList extends React.Component {
 					addToPoll={this.addToPoll}
 					removeFromBox={this.props.removeFromBox}
 					roomId={this.props.roomId}
+					status={this.props.status}
 				/>
 				<ItemVote
 					index={this.props.index}

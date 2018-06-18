@@ -1,8 +1,10 @@
 import React from "react";
+import base from "../base";
 import { firebaseApp } from "../base";
 
 class PollStatus extends React.Component {
 	state = {
+		roombox: [],
 		status: false
 	};
 
@@ -12,9 +14,14 @@ class PollStatus extends React.Component {
 		database.on("value", snapshot => {
 			if (snapshot.exists()) {
 				this.setState({ status: true });
-				console.log("HELLOOOOOOOOO");
 			}
 		});
+	}
+
+	componentDidUpdate() {
+		if (this.props.index === this.props.status && this.state.status) {
+			this.setState({ status: !this.state.status });
+		}
 	}
 
 	onClickAdd = () => {
