@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 
 import LeaderboardList from "./LeaderboardList";
 import MovieCard from "./MovieCard";
-import PollList from "./PollList";
+import Sidebar from "./Sidebar";
 
 class Leaderboard extends React.Component {
   state = {
@@ -40,7 +40,7 @@ class Leaderboard extends React.Component {
       globalbox[key] = null
     });
     this.setState({ globalbox: globalbox });
-    this.forceUpdate();
+    // this.forceUpdate();
   }
 
   addToBox = (item, index) => {
@@ -62,7 +62,7 @@ class Leaderboard extends React.Component {
       roombox[key] = null
     });
     this.setState({ roombox: roombox });
-    this.forceUpdate();
+    // this.forceUpdate();
   }
 
   editGlobalVote = (index, value) => {
@@ -98,8 +98,10 @@ class Leaderboard extends React.Component {
         <Switch>
           <Route path={`${path}/movies`} component={MovieCard} />
         </Switch>
-        {/* {this.state.start ? <PollList roomId={this.props.match.params.roomId}/> : null} */}
-        {this.state.start ? leaderboardItem : null}
+        <Sidebar roomId={this.props.match.params.roomId}/>
+        <div id="main">
+          {this.state.start ? leaderboardItem : null}
+        </div>
       </div>
 
     );
