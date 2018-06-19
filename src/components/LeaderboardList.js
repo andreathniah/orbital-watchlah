@@ -3,6 +3,11 @@ import PollStatus from "./PollStatus";
 import ItemVote from "./ItemVote";
 
 class LeaderboardList extends React.Component {
+	state = {
+		upvote: false,
+		downvote: false
+	};
+
 	addToPoll = index => {
 		console.log("adding " + index);
 		const item = {
@@ -21,11 +26,12 @@ class LeaderboardList extends React.Component {
 					addToPoll={this.addToPoll}
 					removeFromBox={this.props.removeFromBox}
 					roomId={this.props.roomId}
-					status={this.props.status}
+					toggle={this.props.toggle}
 				/>
 				<ItemVote
 					index={this.props.index}
 					details={this.props.details}
+					roomId={this.props.roomId}
 					editGlobalVote={this.props.editGlobalVote}
 				/>
 				<br />

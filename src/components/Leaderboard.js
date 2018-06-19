@@ -7,7 +7,7 @@ class Leaderboard extends React.Component {
 	state = {
 		globalbox: [],
 		start: false,
-		refresh: null,
+		toggle: null,
 		roombox: []
 	};
 
@@ -59,30 +59,42 @@ class Leaderboard extends React.Component {
 		this.setState({ roombox: roombox });
 	};
 
-	editGlobalVote = (index, value) => {
+	editGlobalVote = (index, value, status) => {
 		const globalbox = { ...this.state.globalbox };
+		const render = Object.keys(globalbox).filter(key => key === "Room");
+		if (!render) {
+			var room = [];
+		} else {
+			var room = { ...this.state.room };
+		}
+		room[this.props.match.params.roomId] = {
+			status: status
+		};
+
+		console.log(room);
 		globalbox[index] = {
 			Title: globalbox[index].Title,
 			UpdateStatus: globalbox[index].UpdateStatus,
-			WatchVote: value
+			WatchVote: value,
+			Room: room
 		};
 		this.setState({ globalbox: globalbox });
 	};
 
-	refresh = index => {
+	// to faciliate toggling PollStatus's button
+	toggle = index => {
 		this.setState(
 			prevState => ({
-				refresh: index
+				toggle: index
 			}),
 			() => {
 				this.setState({ state: this.state });
-				console.log(this.state.refresh);
 			}
 		);
 	};
 
 	render() {
-		const { globalbox, refresh } = this.state;
+		const { globalbox, toggle } = this.state;
 
 		const leaderboardItem = Object.keys(globalbox).map(id => {
 			return (
@@ -90,7 +102,7 @@ class Leaderboard extends React.Component {
 					key={id}
 					index={id}
 					details={globalbox[id]}
-					status={refresh}
+					toggle={toggle}
 					roomId={this.props.match.params.roomId}
 					addToBox={this.addToBox}
 					removeFromBox={this.removeFromBox}
@@ -101,10 +113,7 @@ class Leaderboard extends React.Component {
 
 		return (
 			<div>
-				<Sidebar
-					roomId={this.props.match.params.roomId}
-					refresh={this.refresh}
-				/>
+				<Sidebar roomId={this.props.match.params.roomId} toggle={this.toggle} />
 				<div id="main">{this.state.start ? leaderboardItem : null}</div>
 			</div>
 		);

@@ -18,9 +18,12 @@ class PollStatus extends React.Component {
 		});
 	}
 
+	// toggle button back to "+" when item is absent from database
 	componentDidUpdate() {
-		if (this.props.index === this.props.status && this.state.status) {
-			this.setState({ status: !this.state.status });
+		const { index, toggle } = this.props;
+		const { status } = this.state;
+		if (index === toggle && status) {
+			this.setState({ status: !status });
 		}
 	}
 

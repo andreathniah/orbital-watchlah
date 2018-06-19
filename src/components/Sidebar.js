@@ -40,7 +40,7 @@ class Sidebar extends React.Component {
 					index={id}
 					details={roombox[id]}
 					removeFromList={this.removeFromList}
-					refresh={this.props.refresh}
+					toggle={this.props.toggle}
 				/>
 			);
 		});
