@@ -15,6 +15,7 @@ class RoomPicker extends React.Component {
 	render() {
 		return (
 			<div>
+				{/* run through default scraping once per day or when the database is empty */}
 				<FetchJSON />
 				<form onSubmit={this.goToRoom}>
 					<h2>Please enter a Room ID</h2>

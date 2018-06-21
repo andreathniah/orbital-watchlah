@@ -7,6 +7,7 @@ class FetchMovies extends React.Component {
 		this.fetchData();
 	}
 
+	// fetch call to obtain all JSON objects of currently showing movies
 	fetchData = () => {
 		const str = this.props.name;
 		const title = str.replace(/\s+/g, "+").toLowerCase();

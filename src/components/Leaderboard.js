@@ -5,10 +5,10 @@ import Sidebar from "./Sidebar";
 
 class Leaderboard extends React.Component {
 	state = {
-		globalbox: [],
-		start: false,
+		globalbox: [], // contains global information used by all users
+		start: false, // completion status of old movies deletion
 		toggle: null,
-		roombox: []
+		roombox: [] // contains user specific information
 	};
 
 	componentDidMount() {
@@ -16,7 +16,7 @@ class Leaderboard extends React.Component {
 			context: this,
 			state: "globalbox",
 			then() {
-				this.deleteStuff(this.state.globalbox);
+				this.deleteOldMovies(this.state.globalbox);
 				console.log("loading completed");
 				this.setState({ start: true });
 			}
@@ -28,7 +28,12 @@ class Leaderboard extends React.Component {
 		});
 	}
 
-	deleteStuff = globalbox => {
+	componentWillUnmount() {
+		base.removeBinding(this.ref);
+	}
+
+	// delete movies identified as not currently showing anymore at FetchJSON.js
+	deleteOldMovies = globalbox => {
 		Object.entries(globalbox)
 			.filter(([key, val]) => !val.UpdateStatus)
 			.map(([key, val]) => key)
@@ -39,12 +44,16 @@ class Leaderboard extends React.Component {
 		this.setState({ globalbox: globalbox });
 	};
 
+	// adding specified movie into users' customised polling list
+	// pre-cond: movie's Id and item (name and individual votes) from LeaderboardList.js
 	addToBox = (item, index) => {
 		const roombox = { ...this.state.roombox };
 		roombox[index] = item;
 		this.setState({ roombox: roombox });
 	};
 
+	// removing specified movies from user's customised polling list
+	// pre-cond: movies Id from PollStatus.js or SidebarItem.js
 	removeFromBox = index => {
 		console.log("removing " + index);
 		const roombox = { ...this.state.roombox };
@@ -59,11 +68,13 @@ class Leaderboard extends React.Component {
 		this.setState({ roombox: roombox });
 	};
 
+	// updating globalvotes and noting which specific rooms voted
+	// pre-cond: movies Id, new vote value,  vote status (voted 1/0/-1)
 	editGlobalVote = (index, value, status) => {
 		const globalbox = { ...this.state.globalbox };
 		const render = Object.keys(globalbox).filter(key => key === "Room");
 		if (!render) {
-			var room = [];
+			var room = []; // create new room when no rooms voted yet
 		} else {
 			var room = { ...this.state.room };
 		}
@@ -81,14 +92,15 @@ class Leaderboard extends React.Component {
 		this.setState({ globalbox: globalbox });
 	};
 
-	// to faciliate toggling PollStatus's button
+	// to faciliate toggling PollStatus's button by forcing state to re-render
+	// pre-cond: movies Id from SidebarItem.js
 	toggle = index => {
 		this.setState(
 			prevState => ({
 				toggle: index
 			}),
 			() => {
-				this.setState({ state: this.state });
+				console.log(this.state.toggle);
 			}
 		);
 	};
@@ -116,6 +128,7 @@ class Leaderboard extends React.Component {
 				<div className="row">
 					<Sidebar
 						roomId={this.props.match.params.roomId}
+						removeFromBox={this.removeFromBox}
 						match={this.props.match}
 						toggle={this.toggle}
 					/>

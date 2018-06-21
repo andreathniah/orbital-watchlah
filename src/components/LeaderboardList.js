@@ -3,11 +3,8 @@ import PollStatus from "./PollStatus";
 import ItemVote from "./ItemVote";
 
 class LeaderboardList extends React.Component {
-	state = {
-		upvote: false,
-		downvote: false
-	};
-
+	// creation of new poll item containing individual votes, used for Leaderboard.js
+	// pre-cond:  movie's Id from PollStatus.js
 	addToPoll = index => {
 		console.log("adding " + index);
 		const item = {

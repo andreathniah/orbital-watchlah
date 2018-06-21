@@ -5,7 +5,7 @@ import SidebarItem from "./SidebarItem";
 
 class Sidebar extends React.Component {
 	state = {
-		roombox: []
+		roombox: [] // contains user specific information
 	};
 
 	componentDidMount() {
@@ -16,19 +16,9 @@ class Sidebar extends React.Component {
 		});
 	}
 
-	removeFromList = index => {
-		console.log("removing " + index);
-		const roombox = { ...this.state.roombox };
-
-		Object.entries(roombox)
-			.filter(([key, val]) => key === index)
-			.map(([key, val]) => key)
-			.forEach(key => {
-				console.log("deleting " + key);
-				roombox[key] = null;
-			});
-		this.setState({ roombox: roombox });
-	};
+	componentWillUnmount() {
+		base.removeBinding(this.ref);
+	}
 
 	render() {
 		const { roombox } = this.state;
@@ -40,7 +30,7 @@ class Sidebar extends React.Component {
 					key={id}
 					index={id}
 					details={roombox[id]}
-					removeFromList={this.removeFromList}
+					removeFromBox={this.props.removeFromBox}
 					toggle={this.props.toggle}
 				/>
 			);

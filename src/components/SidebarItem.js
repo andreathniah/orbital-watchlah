@@ -1,9 +1,10 @@
 import React from "react";
 
 class SidebarItem extends React.Component {
+	// remove title from roombox database onclick
 	onClickRemove = () => {
 		const { index } = this.props;
-		this.props.removeFromList(index);
+		this.props.removeFromBox(index);
 		this.props.toggle(index);
 	};
 

@@ -25,10 +25,12 @@ class ItemVote extends React.Component {
 			});
 	}
 
+	// toggle the upvote button when clicked
 	onClickUpvote = () => {
 		const { globalvote, upvote, downvote } = this.state;
 		const { index } = this.props;
 
+		// when the upvote button is selected twice, rendering it inactive
 		if (upvote) {
 			console.log("downvoted " + index);
 			var status = "equal";
@@ -39,7 +41,6 @@ class ItemVote extends React.Component {
 				upvote: downvote,
 				downvote: downvote
 			});
-			console.log("upvote equal");
 		} else {
 			console.log("upvoted " + index);
 			var status = true;
@@ -54,10 +55,12 @@ class ItemVote extends React.Component {
 		this.props.editGlobalVote(index, newVote, status);
 	};
 
+	// toggle the downvote button when clicked
 	onClickDownvote = () => {
 		const { globalvote, downvote, upvote } = this.state;
 		const { index } = this.props;
 
+		// when the upvote button is selected twice, rendering it inactive
 		if (downvote) {
 			console.log("upvoted " + index);
 			var status = "equal";
@@ -68,7 +71,6 @@ class ItemVote extends React.Component {
 				downvote: upvote,
 				upvote: upvote
 			});
-			console.log("downvote equal");
 		} else {
 			console.log("downvoted " + index);
 			var status = false;
@@ -85,7 +87,6 @@ class ItemVote extends React.Component {
 
 	render() {
 		const { upvote, downvote } = this.state;
-		// console.log(upvote + " " + downvote);
 		var upCSS = upvote
 			? "col-md-4 btn btn-warning"
 			: "col-md-4 btn btn-outline-warning";
@@ -96,21 +97,13 @@ class ItemVote extends React.Component {
 
 		return (
 			<div id="vote-item" className="row align-items-center">
-				<button
-					// className="col-md-4 btn btn-secondary"
-					className={upCSS}
-					type="button"
-					// disabled={this.state.upvote}
-					onClick={this.onClickUpvote}
-				>
+				<button className={upCSS} type="button" onClick={this.onClickUpvote}>
 					up
 				</button>
 				<span className="col-md-4 text-center">{this.state.globalvote}</span>
 				<button
-					// className="col-md-4 btn btn-secondary"
 					className={downCSS}
 					type="button"
-					// disabled={this.state.downvote}
 					onClick={this.onClickDownvote}
 				>
 					down

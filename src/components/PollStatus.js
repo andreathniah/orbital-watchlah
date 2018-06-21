@@ -4,8 +4,8 @@ import { firebaseApp } from "../base";
 
 class PollStatus extends React.Component {
 	state = {
-		roombox: [],
-		status: false
+		roombox: [], // contains user specific information
+		status: false // controls the text of the poll button (+/-)
 	};
 
 	componentDidMount() {
@@ -13,12 +13,14 @@ class PollStatus extends React.Component {
 		const database = firebaseApp.database().ref(`rooms/${roomId}/${index}`);
 		database.on("value", snapshot => {
 			if (snapshot.exists()) {
+				// check if movie already exists in the specific user
 				this.setState({ status: true });
 			}
 		});
 	}
 
-	// toggle button back to "+" when item is absent from database
+	// toggle button back to "+" when item is deleted from the sidebar
+	// bug alert: doesn't work when you redo the add-then-delete process 2nd time onwards
 	componentDidUpdate() {
 		const { index, toggle } = this.props;
 		const { status } = this.state;
@@ -27,8 +29,9 @@ class PollStatus extends React.Component {
 		}
 	}
 
+	// add movie to user's customised poll while toggling the status of the button
 	onClickAdd = () => {
-		// if status is false, turn to true, else do nothihng
+		// if status is false, turn to true, else do nothing
 		const status = this.state.status ? false : true;
 		if (status) {
 			this.setState({ status: status });
@@ -40,6 +43,7 @@ class PollStatus extends React.Component {
 	};
 	render() {
 		const status = this.state.status ? " - " : " + ";
+		// console.log(this.state.status + " " + status);
 		return (
 			<div id="poll-item">
 				<button

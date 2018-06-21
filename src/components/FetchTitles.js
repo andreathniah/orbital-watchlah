@@ -5,13 +5,14 @@ import { proxyURL } from "../secret";
 
 class FetchTitles extends React.Component {
 	state = {
-		titles: []
+		titles: [] // containis all currently showing titles
 	};
 
 	componentDidMount() {
 		this.fetchTitles();
 	}
 
+	// fetch call to obtain all titles of current showing movies
 	fetchTitles = () => {
 		const requestedURL = "insing.com/movies/now-showing/";
 

@@ -7,11 +7,11 @@ import { firebaseApp } from "../base";
 
 class FetchJSON extends React.Component {
 	state = {
-		initiateScrape: false,
-		initiateUpdate: false,
-		initiateFlip: false,
-		databox: [],
-		globalbox: []
+		initiateScrape: false, // to start scraping from stretch
+		initiateUpdate: false, // to identify old movies that should be deleted
+		initiateFlip: false, // to flip updateStatus to true to flag as current movies
+		databox: [], // contains JSON object of movie details information
+		globalbox: [] // contains global information used by all users
 	};
 
 	componentDidMount() {
@@ -21,7 +21,6 @@ class FetchJSON extends React.Component {
 			dateObj.getUTCDate() +
 			dateObj.getUTCMonth() +
 			dateObj.getUTCFullYear();
-		// const todayDate = "1632018";
 
 		const database = firebaseApp.database().ref("moviesJSON");
 
@@ -34,18 +33,12 @@ class FetchJSON extends React.Component {
 					} else {
 						console.log("old data found, deleting and re-scraping...");
 						database.remove();
-						this.setState({
-							initiateScrape: true,
-							initiateUpdate: true
-						});
+						this.setState({ initiateScrape: true, initiateUpdate: true });
 					}
 				});
 			} else {
 				console.log("scraping in progress...");
-				this.setState({
-					initiateScrape: true,
-					initiateFlip: true
-				});
+				this.setState({ initiateScrape: true, initiateFlip: true });
 			}
 		});
 
@@ -64,6 +57,8 @@ class FetchJSON extends React.Component {
 		base.removeBinding(this.ref);
 	}
 
+	// adding movie details JSON object to databox
+	// pre-cond: movie details information JSON object from FetchMovies.js
 	addData = data => {
 		const databox = { ...this.state.databox };
 		databox[data.imdbID] = data;
@@ -72,6 +67,8 @@ class FetchJSON extends React.Component {
 		});
 	};
 
+	// default global (for all users) information
+	// pre-cond: movie details information JSON object from FetchMovies.js
 	createGlobalList = data => {
 		const globalbox = { ...this.state.globalbox };
 		globalbox[data.imdbID] = {
@@ -83,6 +80,8 @@ class FetchJSON extends React.Component {
 		this.setState({ globalbox: globalbox });
 	};
 
+	// update old information with new one during re-scraping
+	// pre-cond: movie details information JSON object from FetchMovies.js
 	updateGlobalList = data => {
 		const globalbox = { ...this.state.globalbox };
 
@@ -94,7 +93,7 @@ class FetchJSON extends React.Component {
 			globalbox[data.imdbID] = {
 				Title: data.Title,
 				WatchVote: updatedVotes,
-				UpdateStatus: true
+				UpdateStatus: true // identified as current showing movies
 			};
 		}
 		this.setState({ globalbox: globalbox });
