@@ -11,27 +11,11 @@ During casual gatherings, choosing movies often prove to be a chore – especial
 ```
 git clone https://github.com/andreathniah/orbital-watchlah.git
 cd orbital-watchlah
-<<<<<<< HEAD
 npm install
 npm start
 ```
 
 Page [@andreathniah](http://www.andreathniah.com/) for secret file containing firebase authentication and OMDapi key.
-=======
-npm install 
-npm start
-```
-Page [@andreathniah] for secret file containing firebase authentication and OMDapi key.
-
-## Build With
-
-* [NodeJS](http://www.dropwizard.io/1.0.2/docs/) - Web framework used
-* [ReactJS](https://reactjs.org/) - Front-end JS library for building UI 
-* [Firebase](https://firebase.google.com/) - Realtime database used
-* [Cors-Anywhere](https://github.com/Rob--W/cors-anywhere) - Proxy server used for scraping
-
-## Authors
->>>>>>> 453199a772f02eb604328ce3950664e527d1e055
 
 ## Build With
 
