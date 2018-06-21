@@ -17,7 +17,7 @@ class ItemVote extends React.Component {
 			.filter(([key, val]) => key === "Room")
 			.map(([key, val]) => Object.keys(val))
 			.forEach(key => {
-				if (key.includes(roomId)) {
+				if (key.includes(roomId) && details.Room[roomId].status !== "equal") {
 					details.Room[roomId].status
 						? this.setState({ upvote: true, downvote: false })
 						: this.setState({ upvote: false, downvote: true });
@@ -25,49 +25,93 @@ class ItemVote extends React.Component {
 			});
 	}
 
-	increment = () => {
-		const { globalvote, upvote } = this.state;
+	onClickUpvote = () => {
+		const { globalvote, upvote, downvote } = this.state;
 		const { index } = this.props;
-		const newVote = globalvote + 1;
-		this.setState({
-			globalvote: newVote,
-			downvote: upvote,
-			upvote: !upvote
-		});
-		this.props.editGlobalVote(index, newVote, true);
-		console.log("upvoted " + index);
+
+		if (upvote) {
+			console.log("downvoted " + index);
+			var status = "equal";
+			var newVote = globalvote - 1;
+
+			this.setState({
+				globalvote: newVote,
+				upvote: downvote,
+				downvote: downvote
+			});
+			console.log("upvote equal");
+		} else {
+			console.log("upvoted " + index);
+			var status = true;
+			var newVote = globalvote + 1;
+
+			this.setState({
+				globalvote: newVote,
+				downvote: upvote,
+				upvote: !upvote
+			});
+		}
+		this.props.editGlobalVote(index, newVote, status);
 	};
 
-	decrement = () => {
-		const { globalvote, downvote } = this.state;
+	onClickDownvote = () => {
+		const { globalvote, downvote, upvote } = this.state;
 		const { index } = this.props;
-		const newVote = globalvote - 1;
-		this.setState({
-			globalvote: newVote,
-			upvote: downvote,
-			downvote: !downvote
-		});
-		this.props.editGlobalVote(index, newVote, false);
-		console.log("downvoted " + index);
+
+		if (downvote) {
+			console.log("upvoted " + index);
+			var status = "equal";
+			var newVote = globalvote + 1;
+
+			this.setState({
+				globalvote: newVote,
+				downvote: upvote,
+				upvote: upvote
+			});
+			console.log("downvote equal");
+		} else {
+			console.log("downvoted " + index);
+			var status = false;
+			var newVote = globalvote - 1;
+
+			this.setState({
+				globalvote: newVote,
+				upvote: downvote,
+				downvote: !downvote
+			});
+		}
+		this.props.editGlobalVote(index, newVote, status);
 	};
 
 	render() {
+		const { upvote, downvote } = this.state;
+		// console.log(upvote + " " + downvote);
+		var upCSS = upvote
+			? "col-md-4 btn btn-warning"
+			: "col-md-4 btn btn-outline-warning";
+
+		const downCSS = downvote
+			? "col-md-4 btn btn-warning"
+			: "col-md-4 btn btn-outline-warning";
+
 		return (
 			<div id="vote-item" className="row align-items-center">
 				<button
-					className="col-md-4 btn btn-secondary"
+					// className="col-md-4 btn btn-secondary"
+					className={upCSS}
 					type="button"
-					disabled={this.state.upvote}
-					onClick={this.increment}
+					// disabled={this.state.upvote}
+					onClick={this.onClickUpvote}
 				>
 					up
 				</button>
 				<span className="col-md-4 text-center">{this.state.globalvote}</span>
 				<button
-					className="col-md-4 btn btn-secondary"
+					// className="col-md-4 btn btn-secondary"
+					className={downCSS}
 					type="button"
-					disabled={this.state.downvote}
-					onClick={this.decrement}
+					// disabled={this.state.downvote}
+					onClick={this.onClickDownvote}
 				>
 					down
 				</button>
