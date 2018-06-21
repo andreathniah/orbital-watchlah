@@ -53,12 +53,22 @@ class ItemVote extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<button disabled={this.state.upvote} onClick={this.increment}>
+			<div id="vote-item" className="row align-items-center">
+				<button
+					className="col-md-4 btn btn-secondary"
+					type="button"
+					disabled={this.state.upvote}
+					onClick={this.increment}
+				>
 					up
 				</button>
-				<span> {this.state.globalvote} </span>
-				<button disabled={this.state.downvote} onClick={this.decrement}>
+				<span className="col-md-4 text-center">{this.state.globalvote}</span>
+				<button
+					className="col-md-4 btn btn-secondary"
+					type="button"
+					disabled={this.state.downvote}
+					onClick={this.decrement}
+				>
 					down
 				</button>
 			</div>

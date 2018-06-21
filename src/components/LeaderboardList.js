@@ -19,22 +19,31 @@ class LeaderboardList extends React.Component {
 
 	render() {
 		return (
-			<div>
-				{this.props.details.Title}
-				<PollStatus
-					index={this.props.index}
-					addToPoll={this.addToPoll}
-					removeFromBox={this.props.removeFromBox}
-					roomId={this.props.roomId}
-					toggle={this.props.toggle}
-				/>
-				<ItemVote
-					index={this.props.index}
-					details={this.props.details}
-					roomId={this.props.roomId}
-					editGlobalVote={this.props.editGlobalVote}
-				/>
-				<br />
+			<div id="leaderboard-item" className="col-md-3 box-shadow">
+				<div className="card md-3">
+					<img
+						className="card-img-top"
+						src={this.props.details.Poster}
+						alt={this.props.details.Title}
+					/>
+					<PollStatus
+						index={this.props.index}
+						addToPoll={this.addToPoll}
+						removeFromBox={this.props.removeFromBox}
+						roomId={this.props.roomId}
+						toggle={this.props.toggle}
+					/>
+				</div>
+
+				<div className="card-body">
+					<ItemVote
+						index={this.props.index}
+						details={this.props.details}
+						roomId={this.props.roomId}
+						editGlobalVote={this.props.editGlobalVote}
+					/>
+					<br />
+				</div>
 			</div>
 		);
 	}

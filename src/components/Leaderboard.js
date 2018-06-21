@@ -71,9 +71,9 @@ class Leaderboard extends React.Component {
 			status: status
 		};
 
-		console.log(room);
 		globalbox[index] = {
 			Title: globalbox[index].Title,
+			Poster: globalbox[index].Poster,
 			UpdateStatus: globalbox[index].UpdateStatus,
 			WatchVote: value,
 			Room: room
@@ -112,9 +112,19 @@ class Leaderboard extends React.Component {
 		});
 
 		return (
-			<div>
-				<Sidebar roomId={this.props.match.params.roomId} toggle={this.toggle} />
-				<div id="main">{this.state.start ? leaderboardItem : null}</div>
+			<div className="container-fluid">
+				<div className="row">
+					<Sidebar
+						roomId={this.props.match.params.roomId}
+						match={this.props.match}
+						toggle={this.toggle}
+					/>
+					<div id="leaderboard-main" className="col-md-10">
+						<div className="row">
+							{this.state.start ? leaderboardItem : null}
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}

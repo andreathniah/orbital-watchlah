@@ -76,9 +76,9 @@ class FetchJSON extends React.Component {
 		const globalbox = { ...this.state.globalbox };
 		globalbox[data.imdbID] = {
 			Title: data.Title,
+			Poster: data.Poster,
 			WatchVote: 0,
 			UpdateStatus: false
-			// Room: false
 		};
 		this.setState({ globalbox: globalbox });
 	};
@@ -87,7 +87,7 @@ class FetchJSON extends React.Component {
 		const globalbox = { ...this.state.globalbox };
 
 		if (globalbox.hasOwnProperty(data.imdbID)) {
-			console.log(data.imdbID + " updating watch-votes...");
+			console.log("updating watch-votes...");
 			const updatedVotes = globalbox[data.imdbID].WatchVote;
 			const updatedRooms = globalbox[data.imdbID].Room;
 
@@ -95,7 +95,6 @@ class FetchJSON extends React.Component {
 				Title: data.Title,
 				WatchVote: updatedVotes,
 				UpdateStatus: true
-				// Room: updatedRooms
 			};
 		}
 		this.setState({ globalbox: globalbox });

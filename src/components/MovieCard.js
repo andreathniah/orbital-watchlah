@@ -8,6 +8,7 @@ class MovieCard extends React.Component {
 	};
 
 	componentDidMount() {
+		// need to remind users to refresh if no data is shown
 		const dateObj = new Date();
 		const todayDate =
 			"" +

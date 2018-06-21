@@ -1,7 +1,6 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import base from "../base";
-import MovieCard from "./MovieCard";
 import SidebarItem from "./SidebarItem";
 
 class Sidebar extends React.Component {
@@ -33,9 +32,11 @@ class Sidebar extends React.Component {
 
 	render() {
 		const { roombox } = this.state;
+		const { match } = this.props;
 		const item = Object.keys(roombox).map(id => {
 			return (
 				<SidebarItem
+					id="sidebar-item"
 					key={id}
 					index={id}
 					details={roombox[id]}
@@ -46,13 +47,17 @@ class Sidebar extends React.Component {
 		});
 
 		return (
-			<div id="side-bar">
-				<Switch>
-					<Route path={`${this.props.roomId}/movies`} component={MovieCard} />
-				</Switch>
-				<div>Link to popularity page</div>
-				<div>Link to movie details</div>
-				{item}
+			<div id="sidebar-main" className="col-md-2">
+				<div id="sidebar-link">
+					<Link to={`${match.url}/movies`}>Movie Details</Link>
+				</div>
+				<div id="sidebar-link">
+					<Link to={`${match.url}`}>Leaderboard</Link>
+				</div>
+				<div id="sidebar-link">
+					<Link to={`${match.url}/polls`}>Polls</Link>
+					{item}
+				</div>
 				<br />
 			</div>
 		);
