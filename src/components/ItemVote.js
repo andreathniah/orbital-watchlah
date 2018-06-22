@@ -1,6 +1,4 @@
 import React from "react";
-import base from "../base";
-import { firebaseApp } from "../base";
 
 class ItemVote extends React.Component {
 	state = {
@@ -10,8 +8,8 @@ class ItemVote extends React.Component {
 	};
 
 	componentDidMount() {
-		const { details, roomId, index } = this.props;
-		const { upvote, downvote } = this.state;
+		const { details, roomId } = this.props;
+		// const { upvote, downvote } = this.state;
 
 		const render = Object.entries(details)
 			.filter(([key, val]) => key === "Room")

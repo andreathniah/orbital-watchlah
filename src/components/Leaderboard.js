@@ -95,14 +95,7 @@ class Leaderboard extends React.Component {
 	// to faciliate toggling PollStatus's button by forcing state to re-render
 	// pre-cond: movies Id from SidebarItem.js
 	toggle = index => {
-		this.setState(
-			prevState => ({
-				toggle: index
-			}),
-			() => {
-				console.log(this.state.toggle);
-			}
-		);
+		this.setState(prevState => ({ toggle: index }));
 	};
 
 	render() {

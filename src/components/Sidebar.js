@@ -9,7 +9,8 @@ class Sidebar extends React.Component {
 	};
 
 	componentDidMount() {
-		const { roomId } = this.props;
+		const { match } = this.props;
+		const roomId = match.params.roomId;
 		this.ref = base.syncState(`rooms/${roomId}`, {
 			context: this,
 			state: "roombox"
