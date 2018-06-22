@@ -24,14 +24,13 @@ class MovieCard extends React.Component {
 
 	render() {
 		// individual movie details card
-		console.log("in movie card ");
 		const card = Object.keys(this.state.databox).map(id => {
 			return (
 				<MovieCardItem key={id} index={id} details={this.state.databox[id]} />
 			);
 		});
 
-		return <div>{card}</div>;
+		return <div className="container-fluid">{card}</div>;
 	}
 }
 

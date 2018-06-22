@@ -2,6 +2,10 @@ import React from "react";
 import RatingItem from "./RatingItem";
 
 class MovieCardItem extends React.Component {
+	onImageError = event => {
+		event.target.src = "/images/default-poster.png";
+	};
+
 	render() {
 		const { Plot, Poster, Ratings, Released, Title } = this.props.details;
 		if (typeof Ratings !== "undefined") {
@@ -12,8 +16,8 @@ class MovieCardItem extends React.Component {
 		}
 
 		return (
-			<div id="movie-card-item">
-				<img src={Poster} alt={this.props.index} />
+			<div id="movie-card-item" className="container-fluid">
+				<img src={Poster} alt={this.props.index} onError={this.onImageError} />
 				<div>{Title}</div>
 				<div>{Plot}</div>
 				<div>{Released}</div>

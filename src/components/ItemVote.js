@@ -88,12 +88,12 @@ class ItemVote extends React.Component {
 	render() {
 		const { upvote, downvote } = this.state;
 		var upCSS = upvote
-			? "col-md-4 btn btn-warning"
-			: "col-md-4 btn btn-outline-warning";
+			? "col-md-4 btn btn-secondary"
+			: "col-md-4 btn btn-outline-secondary";
 
 		const downCSS = downvote
-			? "col-md-4 btn btn-warning"
-			: "col-md-4 btn btn-outline-warning";
+			? "col-md-4 btn btn-secondary"
+			: "col-md-4 btn btn-outline-secondary";
 
 		return (
 			<div id="vote-item" className="row align-items-center">

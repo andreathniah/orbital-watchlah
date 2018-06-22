@@ -88,7 +88,6 @@ class FetchJSON extends React.Component {
 		if (globalbox.hasOwnProperty(data.imdbID)) {
 			console.log("updating watch-votes...");
 			const updatedVotes = globalbox[data.imdbID].WatchVote;
-			const updatedRooms = globalbox[data.imdbID].Room;
 
 			globalbox[data.imdbID] = {
 				Title: data.Title,
