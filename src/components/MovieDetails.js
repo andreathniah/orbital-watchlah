@@ -1,15 +1,15 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 
-class Leaderboard extends React.Component {
+class MovieDetails extends React.Component {
 	render() {
 		return (
 			<div>
 				<Sidebar match={this.props.match} />
-				<div>Leaderboard</div>
+				movie details
 			</div>
 		);
 	}
 }
 
-export default Leaderboard;
+export default MovieDetails;
