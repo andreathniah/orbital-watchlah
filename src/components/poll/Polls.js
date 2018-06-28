@@ -1,6 +1,6 @@
 import React from "react";
 import PollMain from "./PollMain";
-import Sidebar from "./Sidebar";
+import Sidebar from "../sidebar/Sidebar";
 
 class Polls extends React.Component {
 	render() {

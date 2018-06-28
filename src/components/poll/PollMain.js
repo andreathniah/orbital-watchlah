@@ -1,8 +1,8 @@
 import React from "react";
-import base from "../base";
+import base from "../../base";
 import PollItem from "./PollItem";
-import MovieCard from "./MovieCard";
 import PollHeader from "./PollHeader";
+import MovieCard from "../movies/MovieCard";
 
 class PollMain extends React.Component {
 	state = {

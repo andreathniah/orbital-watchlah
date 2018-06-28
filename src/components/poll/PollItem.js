@@ -1,7 +1,7 @@
 import React from "react";
 import PollButton from "./PollButton";
 import PollBar from "./PollBar";
-import base from "../base";
+import base from "../../base";
 
 class PollItem extends React.Component {
 	state = {

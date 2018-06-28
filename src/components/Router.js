@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import RoomPicker from "./RoomPicker";
-import MovieDetails from "./MovieDetails";
-import Polls from "./Polls";
-import Leaderboard from "./Leaderboard";
 import NotFound from "./NotFound";
-import Individual from "./Individual";
-import NicknamePicker from "./NicknamePicker";
+import RoomPicker from "./RoomPicker";
+import MovieDetails from "./movies/MovieDetails";
+import Polls from "./poll/Polls";
+import Leaderboard from "./leaderboard/Leaderboard";
+import Individual from "./poll/Individual";
+import NicknamePicker from "./poll/NicknamePicker";
 
 const Router = () => (
 	<BrowserRouter>
