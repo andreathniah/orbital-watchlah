@@ -3,31 +3,22 @@ import { firebaseApp } from "../base";
 
 class PollButton extends React.Component {
 	state = {
-		status: false
+		status: this.props.status
 	};
-
-	componentDidMount() {
-		const { roomId, user, index } = this.props;
-		const database = firebaseApp
-			.database()
-			.ref(`memberbox/${roomId}/${user}/${index}`);
-		database.on("value", snapshot => {
-			if (snapshot.exists()) {
-				// check if movie already exists in the specific user
-				this.setState({ status: true });
-			}
-		});
-	}
 
 	handleUpvote = () => {
 		const { index } = this.props;
-		const status = this.state.status ? false : true;
 
-		this.setState(prevState => ({ status: status }));
-		this.props.upvoteMovie(index, status);
+		this.setState(
+			prevState => ({ status: !prevState.status }),
+			() => {
+				this.props.upvoteMovie(index, this.state.status);
+			}
+		);
 	};
+
 	render() {
-		const status = this.state.status ? " - " : " + ";
+		const status = this.props.status ? " - " : " + ";
 		return <button onClick={this.handleUpvote}>{status}</button>;
 	}
 }

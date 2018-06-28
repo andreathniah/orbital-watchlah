@@ -9,7 +9,8 @@ class PollMain extends React.Component {
 		display: false,
 		displaybox: [],
 		roombox: [],
-		memberbox: []
+		memberbox: [], // stores individual users' vote preference
+		userbox: [] // stores all users' vote preference
 	};
 
 	componentDidMount() {
@@ -24,6 +25,11 @@ class PollMain extends React.Component {
 			context: this,
 			state: "memberbox"
 		});
+
+		this.ref = base.syncState(`memberbox/${roomId}`, {
+			context: this,
+			state: "userbox"
+		});
 	}
 
 	componentWillUnmount() {
@@ -37,19 +43,23 @@ class PollMain extends React.Component {
 		status
 			? (roombox[index].Votes = roombox[index].Votes + 1)
 			: (roombox[index].Votes = roombox[index].Votes - 1);
-		this.setState(prevState => ({ roombox: roombox }));
 
 		const data = { status: status };
 		memberbox[index] = data;
-		this.setState(prevState => ({ memberbox: memberbox }));
+
+		this.setState(
+			prevState => ({ roombox: roombox, memberbox: memberbox }),
+			() => {
+				console.log(this.state.roombox[index].Votes);
+				console.log(this.state.memberbox[index].status);
+			}
+		);
 	};
 
 	toggleDetails = data => {
 		const { displaybox } = this.state;
 		if (displaybox.length !== 0 && data.imdbID !== displaybox.imdbID) {
-			this.setState(prevState => ({
-				displaybox: data
-			}));
+			this.setState(prevState => ({ displaybox: data }));
 		} else {
 			this.setState(prevState => ({
 				display: !prevState.display,
@@ -59,7 +69,8 @@ class PollMain extends React.Component {
 	};
 
 	render() {
-		const { roombox } = this.state;
+		const { roombox, memberbox, userbox, displaybox, display } = this.state;
+
 		const { user, match } = this.props;
 		const items = Object.keys(roombox).map(id => {
 			return (
@@ -68,7 +79,7 @@ class PollMain extends React.Component {
 					index={id}
 					user={user}
 					roomId={match.params.roomId}
-					details={roombox[id]}
+					details={memberbox[id]}
 					toggleDetails={this.toggleDetails}
 					upvoteMovie={this.upvoteMovie}
 				/>
@@ -77,13 +88,9 @@ class PollMain extends React.Component {
 
 		return (
 			<div>
-				<PollHeader roomId={match.params.roomId} />
+				<PollHeader roomId={match.params.roomId} details={userbox} />
 				<div>{items}</div>
-				<div>
-					{this.state.display ? (
-						<MovieCard details={this.state.displaybox} />
-					) : null}
-				</div>
+				<div>{display ? <MovieCard details={displaybox} /> : null}</div>
 			</div>
 		);
 	}
