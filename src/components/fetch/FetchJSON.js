@@ -21,6 +21,8 @@ class FetchJSON extends React.Component {
 			dateObj.getUTCMonth() +
 			dateObj.getUTCFullYear();
 
+		// const todayDate = "29502018";
+
 		const database = firebaseApp.database().ref("moviebox");
 
 		database.once("value", snapshot => {
