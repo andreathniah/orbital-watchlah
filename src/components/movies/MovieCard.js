@@ -2,6 +2,10 @@ import React from "react";
 import RatingItem from "./RatingItem";
 
 class MovieCard extends React.Component {
+	onImageError = event => {
+		event.target.src = "/images/default-poster.png";
+	};
+
 	render() {
 		const { Plot, Poster, Ratings, Released, Title } = this.props.details;
 		if (typeof Ratings !== "undefined") {
@@ -12,12 +16,21 @@ class MovieCard extends React.Component {
 		}
 
 		return (
-			<div>
-				<img src={Poster} alt={this.props.index} />
-				<div>{Released}</div>
-				<div>{Title}</div>
-				<div>{Plot}</div>
-				{ratingItem}
+			<div className="container-fluid row">
+				<div className="col-md-3">
+					<img
+						className="resize-image"
+						src={Poster}
+						alt={this.props.index}
+						onError={this.onImageError}
+					/>
+				</div>
+				<div className="col-md-9">
+					<div>{Released}</div>
+					<div>{Title}</div>
+					<div>{Plot}</div>
+					{ratingItem}
+				</div>
 			</div>
 		);
 	}

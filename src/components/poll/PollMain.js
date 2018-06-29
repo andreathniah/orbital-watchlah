@@ -50,8 +50,8 @@ class PollMain extends React.Component {
 		this.setState(
 			prevState => ({ roombox: roombox, memberbox: memberbox }),
 			() => {
-				console.log(this.state.roombox[index].Votes);
-				console.log(this.state.memberbox[index].status);
+				// console.log(this.state.roombox[index].Votes);
+				// console.log(this.state.memberbox[index].status);
 			}
 		);
 	};
@@ -87,7 +87,7 @@ class PollMain extends React.Component {
 		});
 
 		return (
-			<div>
+			<div className="col-md-10">
 				<PollHeader roomId={match.params.roomId} details={userbox} />
 				<div>{items}</div>
 				<div>{display ? <MovieCard details={displaybox} /> : null}</div>

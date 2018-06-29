@@ -7,7 +7,7 @@ class Individual extends React.Component {
 		const { nickname } = this.props.match.params;
 		return (
 			<div>
-				<Sidebar match={this.props.match} />
+				{/* <Sidebar match={this.props.match} /> */}
 				hello {nickname}
 				<PollMain user={nickname} match={this.props.match} />
 			</div>

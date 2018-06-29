@@ -10,7 +10,7 @@ class Leaderboard extends React.Component {
 	};
 
 	componentDidMount() {
-		this.ref = base.syncState(`rooms/${this.props.match.params.roomId}`, {
+		this.ref = base.syncState(`roombox/${this.props.match.params.roomId}`, {
 			context: this,
 			state: "roombox"
 		});

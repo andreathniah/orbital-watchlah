@@ -27,7 +27,7 @@ class PollHeader extends React.Component {
 					<h3>{noMembers}</h3>
 					Member(s)
 				</div>
-				{this.state.display ? alert(item) : null}
+				{/* {this.state.display ? alert(item) : null} */}
 			</div>
 		);
 	}
