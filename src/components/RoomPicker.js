@@ -1,6 +1,6 @@
 import React from "react";
-import { getFunName } from "../helpers";
-import FetchJSON from "./FetchJSON";
+import FetchJSON from "./fetch/FetchJSON";
+import { getFunName } from "../helpers.js";
 
 class RoomPicker extends React.Component {
 	roomInput = React.createRef();
@@ -9,16 +9,15 @@ class RoomPicker extends React.Component {
 		event.preventDefault();
 		const roomName = this.roomInput.current.value;
 		console.log(roomName);
-		this.props.history.push(`/room/${roomName}`);
+		this.props.history.push(`/${roomName}/leaderboard`);
 	};
 
 	render() {
 		return (
 			<div>
-				{/* run through default scraping once per day or when the database is empty */}
 				<FetchJSON />
 				<form onSubmit={this.goToRoom}>
-					<h2>Please enter a Room ID</h2>
+					<h2>Select your Room ID</h2>
 					<input
 						type="text"
 						ref={this.roomInput}

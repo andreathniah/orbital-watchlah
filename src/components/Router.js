@@ -1,18 +1,23 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import RoomPicker from "./RoomPicker";
-import Leaderboard from "./Leaderboard";
-import MovieCard from "./MovieCard";
-import Polls from "./Polls";
+
 import NotFound from "./NotFound";
+import RoomPicker from "./RoomPicker";
+import MovieDetails from "./movies/MovieDetails";
+import Polls from "./poll/Polls";
+import Leaderboard from "./leaderboard/Leaderboard";
+import Individual from "./poll/Individual";
+import NicknamePicker from "./poll/NicknamePicker";
 
 const Router = () => (
 	<BrowserRouter>
 		<Switch>
 			<Route exact path="/" component={RoomPicker} />
-			<Route path="/room/:roomId/movies" component={MovieCard} />
-			<Route path="/room/:roomId/polls" component={Polls} />
-			<Route path="/room/:roomId" component={Leaderboard} />
+			<Route path="/:roomId/leaderboard" component={Leaderboard} />
+			<Route path="/:roomId/movies" component={MovieDetails} />
+			<Route path="/:roomId/polls" component={Polls} />
+			<Route path="/:roomId/share" component={NicknamePicker} />
+			<Route path="/:roomId/:nickname" component={Individual} />
 			<Route component={NotFound} />
 		</Switch>
 	</BrowserRouter>

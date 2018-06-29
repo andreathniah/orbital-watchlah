@@ -1,5 +1,5 @@
 import React from "react";
-import { firebaseApp } from "../base";
+import { firebaseApp } from "../../base";
 
 class PollStatus extends React.Component {
 	state = {
@@ -8,7 +8,7 @@ class PollStatus extends React.Component {
 
 	componentDidMount() {
 		const { index, roomId } = this.props;
-		const database = firebaseApp.database().ref(`rooms/${roomId}/${index}`);
+		const database = firebaseApp.database().ref(`roombox/${roomId}/${index}`);
 		database.on("value", snapshot => {
 			if (snapshot.exists()) {
 				// check if movie already exists in the specific user
@@ -21,7 +21,7 @@ class PollStatus extends React.Component {
 	componentDidUpdate() {
 		const { index, roomId, toggle } = this.props;
 		const { status } = this.state;
-		const database = firebaseApp.database().ref(`rooms/${roomId}/${index}`);
+		const database = firebaseApp.database().ref(`roombox/${roomId}/${index}`);
 		database.on("value", snapshot => {
 			if (!snapshot.exists() && index === toggle && status) {
 				// check if movie already exists in the specific user

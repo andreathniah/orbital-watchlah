@@ -1,16 +1,15 @@
 import React from "react";
 import FetchTitles from "./FetchTitles";
-import FetchTitlesBackup from "./FetchTitlesBackup";
 
-import base from "../base";
-import { firebaseApp } from "../base";
+import base from "../../base";
+import { firebaseApp } from "../../base";
 
 class FetchJSON extends React.Component {
 	state = {
 		initiateScrape: false, // to start scraping from stretch
 		initiateUpdate: false, // to identify old movies that should be deleted
 		initiateFlip: false, // to flip updateStatus to true to flag as current movies
-		databox: [], // contains JSON object of movie details information
+		moviebox: [], // contains JSON object of movie details information
 		globalbox: [] // contains global information used by all users
 	};
 
@@ -22,7 +21,9 @@ class FetchJSON extends React.Component {
 			dateObj.getUTCMonth() +
 			dateObj.getUTCFullYear();
 
-		const database = firebaseApp.database().ref("moviesJSON");
+		// const todayDate = "29502018";
+
+		const database = firebaseApp.database().ref("moviebox");
 
 		database.once("value", snapshot => {
 			if (snapshot.exists()) {
@@ -42,12 +43,12 @@ class FetchJSON extends React.Component {
 			}
 		});
 
-		this.ref = base.syncState(`moviesJSON/${todayDate}`, {
+		this.ref = base.syncState(`moviebox/${todayDate}`, {
 			context: this,
-			state: "databox"
+			state: "moviebox"
 		});
 
-		this.ref = base.syncState(`globalList/`, {
+		this.ref = base.syncState(`globalbox/`, {
 			context: this,
 			state: "globalbox"
 		});
@@ -57,13 +58,13 @@ class FetchJSON extends React.Component {
 		base.removeBinding(this.ref);
 	}
 
-	// adding movie details JSON object to databox
+	// adding movie details JSON object to moviebox
 	// pre-cond: movie details information JSON object from FetchMovies.js
 	addData = data => {
-		const databox = { ...this.state.databox };
-		databox[data.imdbID] = data;
+		const moviebox = { ...this.state.moviebox };
+		moviebox[data.imdbID] = data;
 		this.setState({
-			databox: databox
+			moviebox: moviebox
 		});
 	};
 

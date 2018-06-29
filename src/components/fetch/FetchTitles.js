@@ -1,26 +1,31 @@
 import React from "react";
 import FetchMovies from "./FetchMovies";
+import { proxyURL } from "../../secret";
 
 class FetchTitles extends React.Component {
 	state = {
-		titles: []
+		titles: [] // contains all currently showing titles
 	};
 
 	componentDidMount() {
 		this.fetchTitles();
 	}
 
+	// fetch call to obtain all titles of current showing movies
 	fetchTitles = () => {
-		fetch("https://cors-anywhere.herokuapp.com/incinemas.sg/showtimes.aspx")
+		const requestedURL = "insing.com/movies/now-showing/";
+
+		fetch(proxyURL + requestedURL)
 			.then(results => {
-				console.log("backup scraping starting ");
 				return results.text();
 			})
 			.then(data => {
 				console.log("Fetching movie titles...");
 				const parser = new DOMParser();
 				const httpDoc = parser.parseFromString(data, "text/html");
-				const movieDDL = httpDoc.getElementById("ddlMovie");
+				const movieDDL = httpDoc
+					.getElementsByClassName("movie-id")[1]
+					.getElementsByTagName("li");
 				const movieTitles = [];
 				for (var i = 1; i < movieDDL.length; i++) {
 					movieTitles.push(movieDDL[i].innerHTML);
@@ -28,14 +33,13 @@ class FetchTitles extends React.Component {
 				return movieTitles;
 			})
 			.then(movieTitles => {
-				this.setState({
-					titles: movieTitles
-				});
+				this.setState({ titles: movieTitles });
 				console.log("Scraping completed.");
 			})
 			.catch(error => {
 				console.log("Scraping failed due to ");
 				console.log(error);
+				console.log("Switching over to backup");
 			});
 	};
 

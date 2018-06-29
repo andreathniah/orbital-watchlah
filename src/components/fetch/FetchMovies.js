@@ -1,5 +1,5 @@
 import React from "react";
-import { proxyURL, omdKey, mdbKey } from "../secret";
+import { proxyURL, omdKey, mdbKey } from "../../secret";
 
 class FetchMovies extends React.Component {
 	state = {
@@ -26,9 +26,7 @@ class FetchMovies extends React.Component {
 			.then(data => {
 				if (data.Response === "True") {
 					this.setState(
-						prevState => ({
-							databox: data
-						}),
+						prevState => ({ databox: data }),
 						() => {
 							this.fetchPoster(data.imdbID);
 						}
@@ -67,7 +65,7 @@ class FetchMovies extends React.Component {
 					);
 				}
 			})
-			.catch(error => console.log("poster replacement error ", error));
+			.catch(error => console.log("poster replacement error"));
 	};
 
 	fetchTrailers = mdbID => {

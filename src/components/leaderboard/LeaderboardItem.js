@@ -2,7 +2,7 @@ import React from "react";
 import PollStatus from "./PollStatus";
 import ItemVote from "./ItemVote";
 
-class LeaderboardList extends React.Component {
+class LeaderboardItem extends React.Component {
 	// creation of new poll item containing individual votes, used for Leaderboard.js
 	// pre-cond:  movie's Id from PollStatus.js
 	addToPoll = index => {
@@ -15,29 +15,38 @@ class LeaderboardList extends React.Component {
 	};
 
 	render() {
+		const {
+			details,
+			index,
+			removeFromBox,
+			roomId,
+			toggle,
+			editGlobalVote
+		} = this.props;
+
 		return (
 			<div id="leaderboard-item" className="col-md-3 box-shadow">
 				<div className="card md-3">
 					<img
 						className="card-img-top"
-						src={this.props.details.Poster}
-						alt={this.props.details.Title}
+						src={details.Poster}
+						alt={details.Title}
 					/>
 					<PollStatus
-						index={this.props.index}
+						index={index}
 						addToPoll={this.addToPoll}
-						removeFromBox={this.props.removeFromBox}
-						roomId={this.props.roomId}
-						toggle={this.props.toggle}
+						removeFromBox={removeFromBox}
+						roomId={roomId}
+						toggle={toggle}
 					/>
 				</div>
 
 				<div className="card-body">
 					<ItemVote
-						index={this.props.index}
-						details={this.props.details}
-						roomId={this.props.roomId}
-						editGlobalVote={this.props.editGlobalVote}
+						index={index}
+						details={details}
+						roomId={roomId}
+						editGlobalVote={editGlobalVote}
 					/>
 					<br />
 				</div>
@@ -46,4 +55,4 @@ class LeaderboardList extends React.Component {
 	}
 }
 
-export default LeaderboardList;
+export default LeaderboardItem;
