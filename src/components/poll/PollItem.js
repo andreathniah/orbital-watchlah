@@ -34,20 +34,22 @@ class PollItem extends React.Component {
 			user,
 			roomId,
 			upvoteMovie,
+			downvoteMovie,
 			toggleDetails
 		} = this.props;
 
 		var status =
-			typeof this.props.details !== "undefined" ? details.status : false;
+			typeof this.props.details !== "undefined" ? details.status : null;
 
 		return (
 			<div>
 				<PollButton
-					index={index}
 					user={user}
+					index={index}
 					status={status}
 					roomId={roomId}
 					upvoteMovie={upvoteMovie}
+					downvoteMovie={downvoteMovie}
 				/>
 				<PollBar details={this.state.moviebox} toggleDetails={toggleDetails} />
 			</div>

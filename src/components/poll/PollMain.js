@@ -39,21 +39,30 @@ class PollMain extends React.Component {
 	upvoteMovie = (index, status) => {
 		const roombox = { ...this.state.roombox };
 		const memberbox = { ...this.state.memberbox };
+		const userbox = { ...this.state.userbox };
 
-		status
-			? (roombox[index].Votes = roombox[index].Votes + 1)
-			: (roombox[index].Votes = roombox[index].Votes - 1);
+		if (status) {
+			console.log("downvote " + !status);
+			roombox[index].Votes = roombox[index].Votes - 1;
+		} else {
+			console.log("upvote " + !status);
+			roombox[index].Votes = roombox[index].Votes + 1;
+			memberbox[index] = { Status: !status };
+		}
 
-		const data = { status: status };
-		memberbox[index] = data;
+		Object.entries(userbox)
+			.filter(([key, val]) => key === this.props.user)
+			.map(([key, val]) => val)
+			.forEach(val => {
+				val[index] = { Status: !status };
+				console.log(val[index].Status);
+			});
 
-		this.setState(
-			prevState => ({ roombox: roombox, memberbox: memberbox }),
-			() => {
-				// console.log(this.state.roombox[index].Votes);
-				// console.log(this.state.memberbox[index].status);
-			}
-		);
+		this.setState(prevState => ({
+			roombox: roombox,
+			memberbox: memberbox,
+			userbox: userbox
+		}));
 	};
 
 	toggleDetails = data => {

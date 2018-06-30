@@ -11,7 +11,7 @@ class ItemVote extends React.Component {
 		const { details, roomId } = this.props;
 		// const { upvote, downvote } = this.state;
 
-		const render = Object.entries(details)
+		Object.entries(details)
 			.filter(([key, val]) => key === "Room")
 			.map(([key, val]) => Object.keys(val))
 			.forEach(key => {
