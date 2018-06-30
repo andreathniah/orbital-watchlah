@@ -2,19 +2,13 @@ import React from "react";
 import { firebaseApp } from "../../base";
 
 class PollButton extends React.Component {
-	state = {
-		// status: false
-		status: this.props.status
-	};
-
 	handleUpvote = () => {
 		const { index } = this.props;
-		this.setState(prevState => ({ status: !prevState.status }));
-		this.props.upvoteMovie(index, this.state.status);
+		this.props.upvoteMovie(index, this.props.status);
 	};
 
 	render() {
-		const status = this.state.status ? " - " : " + ";
+		const status = this.props.status ? " - " : " + ";
 		return <button onClick={this.handleUpvote}>{status}</button>;
 	}
 }

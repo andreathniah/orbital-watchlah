@@ -42,10 +42,8 @@ class PollMain extends React.Component {
 		const userbox = { ...this.state.userbox };
 
 		if (status) {
-			console.log("downvote " + !status);
 			roombox[index].Votes = roombox[index].Votes - 1;
 		} else {
-			console.log("upvote " + !status);
 			roombox[index].Votes = roombox[index].Votes + 1;
 			memberbox[index] = { Status: !status };
 		}

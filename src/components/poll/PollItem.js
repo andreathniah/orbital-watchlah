@@ -39,7 +39,7 @@ class PollItem extends React.Component {
 		} = this.props;
 
 		var status =
-			typeof this.props.details !== "undefined" ? details.status : null;
+			typeof this.props.details !== "undefined" ? details.Status : false;
 
 		return (
 			<div>
