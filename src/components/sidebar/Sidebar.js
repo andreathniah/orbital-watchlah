@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SidebarItem from "./SidebarItem";
+import './Sidebar.css';
+import logo from '../../images/logo.jpg';
 
 class Sidebar extends React.Component {
 	render() {
@@ -21,15 +23,18 @@ class Sidebar extends React.Component {
 		});
 
 		return (
-			<div>
-				<div>
-					<Link to={`/${roomId}/movies`}>Movie Details</Link>
+			<div className="SideBar">
+				<div className="logo">
+					<img src={logo} width="150" height="150" />
 				</div>
-				<div>
-					<Link to={`/${roomId}/leaderboard`}>Leaderboard</Link>
+				<div className="SideBarContent">
+					<Link to={`/${roomId}/leaderboard`}>LEADERBOARD</Link>
 				</div>
-				<div>
-					<Link to={`/${roomId}/polls`}>Polls</Link>
+				<div className="SideBarContent">
+					<Link to={`/${roomId}/movies`}>MOVIE DETAILS</Link>
+				</div>
+				<div className="SideBarContent">
+					<Link to={`/${roomId}/polls`}>POLLS</Link>
 					{item}
 				</div>
 				<br />

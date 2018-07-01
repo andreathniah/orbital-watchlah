@@ -1,5 +1,6 @@
 import React from "react";
 import RatingItem from "./RatingItem";
+import './MovieCard.css';
 
 class MovieCard extends React.Component {
 	onImageError = event => {

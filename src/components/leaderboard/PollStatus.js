@@ -1,5 +1,6 @@
 import React from "react";
 import { firebaseApp } from "../../base";
+import './PollStatus.css';
 
 class PollStatus extends React.Component {
 	state = {

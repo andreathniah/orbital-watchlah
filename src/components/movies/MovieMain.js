@@ -1,6 +1,7 @@
 import React from "react";
 import base from "../../base";
 import MovieItem from "./MovieItem";
+import './MovieMain.css';
 
 class MovieMain extends React.Component {
 	state = {
