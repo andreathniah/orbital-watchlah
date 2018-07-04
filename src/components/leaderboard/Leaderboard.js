@@ -52,8 +52,8 @@ class Leaderboard extends React.Component {
 
 	render() {
 		return (
-			<div className="container-fluid">
-				<div className="row">
+			<div>
+				<div>
 					<Sidebar
 						match={this.props.match}
 						roombox={this.state.roombox}

@@ -4,7 +4,7 @@ class RatingItem extends React.Component {
 	render() {
 		const { Source, Value } = this.props.ratings;
 		return (
-			<div className="movie-ratings">
+			<div>
 				<span>{Source}: </span>
 				<span>{Value}</span>
 			</div>

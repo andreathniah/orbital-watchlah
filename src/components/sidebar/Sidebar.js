@@ -10,7 +10,6 @@ class Sidebar extends React.Component {
 		const item = Object.keys(roombox).map(id => {
 			return (
 				<SidebarItem
-					id="sidebar-item"
 					key={id}
 					index={id}
 					details={roombox[id]}

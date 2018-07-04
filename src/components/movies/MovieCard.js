@@ -16,16 +16,15 @@ class MovieCard extends React.Component {
 		}
 
 		return (
-			<div className="container-fluid row">
-				<div className="col-md-3">
+			<div>
+				<div>
 					<img
-						className="resize-image"
 						src={Poster}
 						alt={this.props.index}
 						onError={this.onImageError}
 					/>
 				</div>
-				<div className="col-md-9">
+				<div>
 					<div>{Released}</div>
 					<div>{Title}</div>
 					<div>{Plot}</div>

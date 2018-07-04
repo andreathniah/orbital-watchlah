@@ -78,7 +78,7 @@ class MovieMain extends React.Component {
 			);
 		});
 
-		return <div className="col-md-10">{card}</div>;
+		return <div>{card}</div>;
 	}
 }
 

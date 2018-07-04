@@ -94,7 +94,7 @@ class PollMain extends React.Component {
 		});
 
 		return (
-			<div className="col-md-10">
+			<div>
 				<PollHeader roomId={match.params.roomId} details={userbox} />
 				<div>{items}</div>
 				<div>{display ? <MovieCard details={displaybox} /> : null}</div>
