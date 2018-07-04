@@ -1,4 +1,5 @@
 import React from "react";
+import "./ItemVote.css";
 
 class ItemVote extends React.Component {
 	state = {

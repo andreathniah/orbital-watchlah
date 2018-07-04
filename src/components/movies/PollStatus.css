@@ -1,0 +1,23 @@
+.btn:hover,
+.btn:active {
+	text-decoration: none;
+	background-color: #EE7600;
+	border: 2px solid #EE7600;
+	color: white;
+	font-family: 'Lato', sans-serif;
+}
+
+.btn:visited,
+.btn:link {
+	text-decoration: none;
+	background-color: #EE7600;
+	border: 2px solid #EE7600;
+	color: white;
+	font-family: 'Lato', sans-serif;
+}
+
+#poll-item{
+	margin-top: 70px;
+	margin-bottom: 70px;
+	margin-left: 20px;
+}
