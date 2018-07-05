@@ -79,8 +79,8 @@ class LeaderboardMain extends React.Component {
 		});
 
 		return (
-			<div id="leaderboard-main" className="col-md-10">
-				<div className="row">{this.state.start ? leaderboardItem : null}</div>
+			<div>
+				<div>{this.state.start ? leaderboardItem : null}</div>
 			</div>
 		);
 	}

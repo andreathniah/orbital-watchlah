@@ -1,6 +1,7 @@
 import React from "react";
 import base from "../../base";
 import MovieItem from "./MovieItem";
+import './MovieMain.css';
 
 class MovieMain extends React.Component {
 	state = {
@@ -78,7 +79,7 @@ class MovieMain extends React.Component {
 			);
 		});
 
-		return <div className="col-md-10">{card}</div>;
+		return <div>{card}</div>;
 	}
 }
 

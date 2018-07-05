@@ -25,13 +25,9 @@ class LeaderboardItem extends React.Component {
 		} = this.props;
 
 		return (
-			<div id="leaderboard-item" className="col-md-3 box-shadow">
-				<div className="card md-3">
-					<img
-						className="card-img-top"
-						src={details.Poster}
-						alt={details.Title}
-					/>
+			<div>
+				<div>
+					<img src={details.Poster} alt={details.Title} />
 					<PollStatus
 						index={index}
 						addToPoll={this.addToPoll}
@@ -41,7 +37,7 @@ class LeaderboardItem extends React.Component {
 					/>
 				</div>
 
-				<div className="card-body">
+				<div>
 					<ItemVote
 						index={index}
 						details={details}

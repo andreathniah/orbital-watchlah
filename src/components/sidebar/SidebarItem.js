@@ -1,4 +1,5 @@
 import React from "react";
+import "./SidebarItem.css";
 
 class SidebarItem extends React.Component {
 	// remove title from roombox database onclick
@@ -12,7 +13,7 @@ class SidebarItem extends React.Component {
 		return (
 			<li>
 				{this.props.details.Title}
-				<button onClick={this.onClickRemove}>delete</button>
+				<button onClick={this.onClickRemove}>-</button>
 			</li>
 		);
 	}

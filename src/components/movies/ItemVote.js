@@ -1,4 +1,5 @@
 import React from "react";
+import "./ItemVote.css";
 
 class ItemVote extends React.Component {
 	state = {
@@ -84,25 +85,14 @@ class ItemVote extends React.Component {
 
 	render() {
 		const { upvote, downvote } = this.state;
-		var upCSS = upvote
-			? "col-md-4 btn btn-secondary"
-			: "col-md-4 btn btn-outline-secondary";
-
-		const downCSS = downvote
-			? "col-md-4 btn btn-secondary"
-			: "col-md-4 btn btn-outline-secondary";
 
 		return (
-			<div id="vote-item">
-				<button className={upCSS} type="button" onClick={this.onClickUpvote}>
+			<div>
+				<button type="button" onClick={this.onClickUpvote}>
 					up
 				</button>
-				<span className="col-md-4 text-center">{this.state.globalvote}</span>
-				<button
-					className={downCSS}
-					type="button"
-					onClick={this.onClickDownvote}
-				>
+				<span>{this.state.globalvote}</span>
+				<button type="button" onClick={this.onClickDownvote}>
 					down
 				</button>
 			</div>

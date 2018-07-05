@@ -1,0 +1,21 @@
+.upCSS:hover,
+.upCSS:active,
+.downCSS:hover,
+.downCSS:active {
+	text-decoration: none;
+	background-color: #EE7600;
+	border: 2px solid #EE7600;
+	color: white;
+	font-family: 'Lato', sans-serif;
+}
+
+.upCSS:visited,
+.upCSS:link,
+.downCSS:visited,
+.downCSS:link {
+	text-decoration: none;
+	background-color: orange;
+	border: 2px solid orange;
+	color: white;
+	font-family: 'Lato', sans-serif;
+}

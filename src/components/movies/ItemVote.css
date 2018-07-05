@@ -1,0 +1,25 @@
+.upCSS:hover,
+.upCSS:active,
+.downCSS:hover,
+.downCSS:active {
+	text-decoration: none;
+	background-color: #EE7600;
+	border: 2px solid #EE7600;
+	color: white;
+}
+
+.upCSS:visited,
+.upCSS:link,
+.downCSS:visited,
+.downCSS:link {
+	text-decoration: none;
+	background-color: orange;
+	border: 2px solid orange;
+	color: white;
+}
+
+#vote-item{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 15px;
+}
