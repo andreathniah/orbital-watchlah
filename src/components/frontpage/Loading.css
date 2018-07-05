@@ -1,0 +1,36 @@
+.box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+	text-align: center;
+	font-family: "Titillium Web", sans-serif;
+}
+
+.box-text {
+	position: relative;
+	font-size: 2em;
+	color: rgba(255, 165, 0, 0.8);
+}
+
+.box-progress {
+	position: relative;
+	color: rgba(255, 165, 0, 0.3);
+	font-size: 5em;
+}
+
+.box-progress:before {
+	content: attr(data-text);
+	position: absolute;
+	overflow: hidden;
+	max-width: 7em;
+	white-space: nowrap;
+	color: #ffa500;
+	animation: loading 45s linear;
+}
+
+@keyframes loading {
+	0% {
+		max-width: 0;
+	}
+}

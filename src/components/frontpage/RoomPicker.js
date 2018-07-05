@@ -1,6 +1,5 @@
 import React from "react";
-import FetchJSON from "./fetch/FetchJSON";
-import { getFunName } from "../helpers.js";
+import { getFunName } from "../../helpers.js";
 
 class RoomPicker extends React.Component {
 	roomInput = React.createRef();
@@ -15,7 +14,6 @@ class RoomPicker extends React.Component {
 	render() {
 		return (
 			<div>
-				<FetchJSON />
 				<form onSubmit={this.goToRoom}>
 					<h2>Select your Room ID</h2>
 					<input

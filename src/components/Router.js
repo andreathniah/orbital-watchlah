@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import NotFound from "./NotFound";
-import RoomPicker from "./RoomPicker";
+import Landing from "./frontpage/Landing";
 import MovieDetails from "./movies/MovieDetails";
 import Polls from "./poll/Polls";
 import Leaderboard from "./leaderboard/Leaderboard";
@@ -12,7 +12,7 @@ import NicknamePicker from "./poll/NicknamePicker";
 const Router = () => (
 	<BrowserRouter>
 		<Switch>
-			<Route exact path="/" component={RoomPicker} />
+			<Route exact path="/" component={Landing} />
 			<Route path="/:roomId/leaderboard" component={Leaderboard} />
 			<Route path="/:roomId/movies" component={MovieDetails} />
 			<Route path="/:roomId/polls" component={Polls} />
