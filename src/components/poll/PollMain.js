@@ -7,6 +7,7 @@ import MovieCard from "../movies/MovieCard";
 class PollMain extends React.Component {
 	state = {
 		display: false,
+		percentage: 0,
 		displaybox: [],
 		roombox: [],
 		memberbox: [], // stores individual users' vote preference
@@ -52,8 +53,7 @@ class PollMain extends React.Component {
 			.filter(([key, val]) => key === this.props.user)
 			.map(([key, val]) => val)
 			.forEach(val => {
-				val[index] = { Status: !status };
-				console.log(val[index].Status);
+				val[index] = status ? { Status: null } : { Status: !status };
 			});
 
 		this.setState(prevState => ({
@@ -86,7 +86,9 @@ class PollMain extends React.Component {
 					index={id}
 					user={user}
 					roomId={match.params.roomId}
-					details={memberbox[id]}
+					roombox={roombox[id]}
+					userbox={userbox}
+					memberbox={memberbox[id]}
 					toggleDetails={this.toggleDetails}
 					upvoteMovie={this.upvoteMovie}
 				/>

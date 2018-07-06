@@ -2,6 +2,7 @@ import React from "react";
 import base from "../../base";
 import PollMain from "./PollMain";
 import Sidebar from "../sidebar/Sidebar";
+import "./Polls.css";
 
 class Polls extends React.Component {
 	state = {
