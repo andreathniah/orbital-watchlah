@@ -45,6 +45,11 @@
 	margin-right: 1vh;
 }
 
+.form span {
+	color: rgba(255, 165, 0, 0.6);
+	font-weight: bold;
+}
+
 .header h1 {
 	font-size: 3em;
 	font-weight: bolder;

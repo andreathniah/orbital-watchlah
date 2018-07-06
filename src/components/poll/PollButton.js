@@ -1,5 +1,4 @@
 import React from "react";
-import { firebaseApp } from "../../base";
 
 class PollButton extends React.Component {
 	handleUpvote = () => {

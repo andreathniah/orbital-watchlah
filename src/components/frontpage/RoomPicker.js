@@ -10,19 +10,20 @@ class RoomPicker extends React.Component {
 		event.preventDefault();
 		const roomName = this.roomInput.current.value;
 		console.log(roomName);
+
 		this.props.history.push(`/${roomName}/leaderboard`);
 	};
 
 	render() {
 		return (
 			<div className="flex-container form">
-				<form>
+				<form onSubmit={this.goToRoom}>
 					<RoomHeader />
 					<input
 						type="text"
 						ref={this.roomInput}
 						required
-						placeholder="Room ID"
+						placeholder="Enter a Room ID"
 						defaultValue={getFunName()}
 					/>
 					<button type="submit" className="button">

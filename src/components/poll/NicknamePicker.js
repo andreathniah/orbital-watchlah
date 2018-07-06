@@ -1,4 +1,5 @@
 import React from "react";
+import NicknameHeader from "./NicknameHeader";
 
 class NicknamePicker extends React.Component {
 	nicknameInput = React.createRef();
@@ -12,17 +13,21 @@ class NicknamePicker extends React.Component {
 	};
 
 	render() {
+		const { roomId } = this.props.match.params;
+
 		return (
-			<div>
+			<div className="flex-container form">
 				<form onSubmit={this.goToPoll}>
-					<h2>Enter your nickname</h2>
+					<NicknameHeader roomId={roomId} />
 					<input
 						type="text"
 						ref={this.nicknameInput}
 						required
-						placeholder="Nickname"
+						placeholder="Enter a Nickname"
 					/>
-					<button type="submit">Start Polling →</button>
+					<button type="submit" className="button">
+						Go
+					</button>
 				</form>
 			</div>
 		);

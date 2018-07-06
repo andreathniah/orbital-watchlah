@@ -2,14 +2,37 @@ import React from "react";
 import Loading from "./Loading";
 import RoomPicker from "./RoomPicker";
 import FetchJSON from "../fetch/FetchJSON";
+import { firebaseApp } from "../../base";
 
 class Landing extends React.Component {
 	state = { loading: true };
 
 	componentDidMount() {
-		this.timeout = setTimeout(() => {
-			this.setState({ loading: false });
-		}, 25000);
+		const dateObj = new Date();
+		const todayDate =
+			"" +
+			dateObj.getUTCDate() +
+			dateObj.getUTCMonth() +
+			dateObj.getUTCFullYear();
+
+		const database = firebaseApp.database().ref("moviebox");
+
+		database.once("value", snapshot => {
+			if (snapshot.exists()) {
+				database.child(todayDate).once("value", snapshot => {
+					if (snapshot.exists()) this.setState({ loading: false });
+					else {
+						this.timeout = setTimeout(() => {
+							this.setState({ loading: false });
+						}, 25000);
+					}
+				});
+			} else {
+				this.timeout = setTimeout(() => {
+					this.setState({ loading: false });
+				}, 25000);
+			}
+		});
 	}
 
 	componentWillUnmount() {
@@ -21,7 +44,11 @@ class Landing extends React.Component {
 		return (
 			<div>
 				{loading ? <Loading /> : <RoomPicker history={this.props.history} />}
-				<FetchJSON />
+				<FetchJSON
+					initiateScrape={this.state.initiateScrape}
+					initiateUpdate={this.state.initiateUpdate}
+					initiateFlip={this.state.initiateFlip}
+				/>
 			</div>
 		);
 	}
