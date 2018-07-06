@@ -1,5 +1,4 @@
 import React from "react";
-import FetchJSON from "../fetch/FetchJSON";
 import "./Loading.css";
 
 class Loading extends React.Component {
@@ -17,8 +16,7 @@ class Loading extends React.Component {
 
 	render() {
 		return (
-			<div className="box">
-				<FetchJSON />
+			<div className="flex-container">
 				<h1 className="box-progress" data-text="loading...">
 					loading...
 				</h1>

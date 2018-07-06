@@ -1,5 +1,7 @@
 import React from "react";
 import { getFunName } from "../../helpers.js";
+import RoomHeader from "./RoomHeader";
+import "./Loading.css";
 
 class RoomPicker extends React.Component {
 	roomInput = React.createRef();
@@ -13,9 +15,9 @@ class RoomPicker extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<form onSubmit={this.goToRoom}>
-					<h2>Select your Room ID</h2>
+			<div className="flex-container form">
+				<form>
+					<RoomHeader />
 					<input
 						type="text"
 						ref={this.roomInput}
@@ -23,7 +25,9 @@ class RoomPicker extends React.Component {
 						placeholder="Room ID"
 						defaultValue={getFunName()}
 					/>
-					<button type="submit">Visit Room →</button>
+					<button type="submit" className="button">
+						Go
+					</button>
 				</form>
 			</div>
 		);

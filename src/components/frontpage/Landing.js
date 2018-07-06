@@ -1,6 +1,7 @@
 import React from "react";
 import Loading from "./Loading";
 import RoomPicker from "./RoomPicker";
+import FetchJSON from "../fetch/FetchJSON";
 
 class Landing extends React.Component {
 	state = { loading: true };
@@ -17,8 +18,12 @@ class Landing extends React.Component {
 
 	render() {
 		const { loading } = this.state;
-		if (loading) return <Loading />;
-		return <RoomPicker history={this.props.history} />;
+		return (
+			<div>
+				{loading ? <Loading /> : <RoomPicker history={this.props.history} />}
+				<FetchJSON />
+			</div>
+		);
 	}
 }
 
