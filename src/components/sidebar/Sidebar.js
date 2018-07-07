@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SidebarItem from "./SidebarItem";
+import "./Sidebar.css";
+import logo from "../../images/logo.jpg";
 
 class Sidebar extends React.Component {
 	render() {
@@ -10,7 +12,6 @@ class Sidebar extends React.Component {
 		const item = Object.keys(roombox).map(id => {
 			return (
 				<SidebarItem
-					id="sidebar-item"
 					key={id}
 					index={id}
 					details={roombox[id]}
@@ -23,13 +24,16 @@ class Sidebar extends React.Component {
 		return (
 			<div>
 				<div>
-					<Link to={`/${roomId}/movies`}>Movie Details</Link>
+					<img src={logo} />
 				</div>
 				<div>
-					<Link to={`/${roomId}/leaderboard`}>Leaderboard</Link>
+					<Link to={`/${roomId}/leaderboard`}>LEADERBOARD</Link>
 				</div>
 				<div>
-					<Link to={`/${roomId}/polls`}>Polls</Link>
+					<Link to={`/${roomId}/movies`}>MOVIE DETAILS</Link>
+				</div>
+				<div>
+					<Link to={`/${roomId}/polls`}>POLLS</Link>
 					{item}
 				</div>
 				<br />

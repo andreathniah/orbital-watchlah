@@ -1,5 +1,6 @@
 import React from "react";
 import { firebaseApp } from "../../base";
+import './PollStatus.css';
 
 class PollStatus extends React.Component {
 	state = {
@@ -45,13 +46,8 @@ class PollStatus extends React.Component {
 	render() {
 		const status = this.state.status ? " - " : " + ";
 		return (
-			<div id="poll-item">
-				<button
-					className="btn btn-sm btn-outline-secondary"
-					onClick={this.onClickAdd}
-				>
-					{status}
-				</button>
+			<div>
+				<button onClick={this.onClickAdd}>{status}</button>
 			</div>
 		);
 	}
