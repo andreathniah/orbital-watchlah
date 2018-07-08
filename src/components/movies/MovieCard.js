@@ -1,6 +1,6 @@
 import React from "react";
 import RatingItem from "./RatingItem";
-import './MovieCard.css';
+import "./MovieCard.css";
 
 class MovieCard extends React.Component {
 	onImageError = event => {
@@ -23,11 +23,11 @@ class MovieCard extends React.Component {
 						src={Poster}
 						alt={this.props.index}
 						onError={this.onImageError}
-					/>
+					 className="posters2"/>
 				</div>
-				<div>
+				<div className="description">
 					<div>{Released}</div>
-					<div>{Title}</div>
+					<div className="title">{Title}</div>
 					<div>{Plot}</div>
 					{ratingItem}
 				</div>

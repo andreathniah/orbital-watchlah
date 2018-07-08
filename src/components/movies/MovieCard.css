@@ -1,3 +1,17 @@
-#col-md-9{
-	font-family: 'Lato', sans-serif;
+.posters2{
+	width: 35%;
+	height: auto;
+	float: left;
+	margin-bottom: 5%;
+	margin-right: 5%;
+}
+
+.title{
+	font-weight: bold;
+	font-size: 50px;
+}
+
+.description{
+	padding: 5%;
+	line-height: 1.5;
 }

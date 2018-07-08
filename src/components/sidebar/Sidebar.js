@@ -22,17 +22,17 @@ class Sidebar extends React.Component {
 		});
 
 		return (
-			<div>
+			<div className = "SideBar">
 				<div>
-					<img src={logo} />
+					<img src={logo} className = "logo"/>
 				</div>
-				<div>
+				<div className = "SideBarContent">
 					<Link to={`/${roomId}/leaderboard`}>LEADERBOARD</Link>
 				</div>
-				<div>
+				<div className = "SideBarContent">
 					<Link to={`/${roomId}/movies`}>MOVIE DETAILS</Link>
 				</div>
-				<div>
+				<div className = "SideBarContent">
 					<Link to={`/${roomId}/polls`}>POLLS</Link>
 					{item}
 				</div>

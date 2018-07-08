@@ -44,10 +44,10 @@ class PollStatus extends React.Component {
 		}
 	};
 	render() {
-		const status = this.state.status ? " - " : " + ";
+		const status = this.state.status ? <i class="fas fa-check"></i> : <i class="fas fa-plus"></i>;
 		return (
-			<div>
-				<button onClick={this.onClickAdd}>{status}</button>
+			<div className="addBtnBox">
+				<button onClick={this.onClickAdd} className="addBtn2">{status}</button>
 			</div>
 		);
 	}

@@ -1,21 +1,25 @@
-.upCSS:hover,
-.upCSS:active,
-.downCSS:hover,
-.downCSS:active {
+.upCSS2,
+.downCSS2{
+	position: relative;
+	width: 30px;
+	height: 30px;
 	text-decoration: none;
-	background-color: #EE7600;
-	border: 2px solid #EE7600;
-	color: white;
+	border: solid 1px transparent;
+	border-radius: 20%;
+	background-color: white;
+	color: orange;
+	padding: 0;
+	z-index: 100;
 }
 
-.upCSS:visited,
-.upCSS:link,
-.downCSS:visited,
-.downCSS:link {
-	text-decoration: none;
+.upCSS2:hover,
+.upCSS2:active,
+.downCSS2:hover,
+.downCSS2:active {
 	background-color: orange;
-	border: 2px solid orange;
+	border: solid 1px transparent;
 	color: white;
+	display: inline-block;
 }
 
 #vote-item{

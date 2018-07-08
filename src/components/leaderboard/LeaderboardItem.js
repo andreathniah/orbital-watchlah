@@ -1,6 +1,8 @@
 import React from "react";
 import PollStatus from "./PollStatus";
 import ItemVote from "./ItemVote";
+import "./grid.css";
+import "./LeaderboardItem.css";
 
 class LeaderboardItem extends React.Component {
 	// creation of new poll item containing individual votes, used for Leaderboard.js
@@ -25,16 +27,16 @@ class LeaderboardItem extends React.Component {
 		} = this.props;
 
 		return (
-			<div>
+			<div className="col span-1-of-3">
 				<div>
-					<img src={details.Poster} alt={details.Title} />
+					<img src={details.Poster} alt={details.Title} className="posters"/>
 					<PollStatus
 						index={index}
 						addToPoll={this.addToPoll}
 						removeFromBox={removeFromBox}
 						roomId={roomId}
 						toggle={toggle}
-					/>
+					 />
 				</div>
 
 				<div>

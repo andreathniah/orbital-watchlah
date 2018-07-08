@@ -13,7 +13,7 @@ class SidebarItem extends React.Component {
 		return (
 			<li>
 				{this.props.details.Title}
-				<button onClick={this.onClickRemove}>-</button>
+				<button onClick={this.onClickRemove} className="minus"><i class="fas fa-minus"></i></button>
 			</li>
 		);
 	}

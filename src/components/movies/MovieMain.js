@@ -79,7 +79,7 @@ class MovieMain extends React.Component {
 			);
 		});
 
-		return <div>{card}</div>;
+		return <div className = "movieMain">{card}</div>;
 	}
 }
 

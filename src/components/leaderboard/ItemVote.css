@@ -1,21 +1,46 @@
+.upCSS,
+.downCSS{
+	position: relative;
+	width: 30px;
+	height: 30px;
+	text-decoration: none;
+	border: solid 1px transparent;
+	border-radius: 20%;
+	background-color: transparent;
+	color: orange;
+	padding: 0;
+	z-index: 100;
+}
+
 .upCSS:hover,
 .upCSS:active,
 .downCSS:hover,
 .downCSS:active {
-	text-decoration: none;
-	background-color: #EE7600;
-	border: 2px solid #EE7600;
-	color: white;
-	font-family: 'Lato', sans-serif;
+	border: solid 1px transparent;
+	display: inline-block;
+	color: #ee7600;
 }
 
-.upCSS:visited,
-.upCSS:link,
-.downCSS:visited,
-.downCSS:link {
-	text-decoration: none;
-	background-color: orange;
-	border: 2px solid orange;
-	color: white;
-	font-family: 'Lato', sans-serif;
+.voteBar{
+	position: relative;
+	border: solid 3px orange;
+	border-top: transparent;
+	width: 78.7%;
+	bottom: 42px;
 }
+
+.middle{
+	margin-left: 110px;
+}
+
+.votes{
+	color: orange;
+	font-weight: bold;
+	font-size: 25px;
+	position: relative;
+	bottom: 3px;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+/*centralise, change the middle, align the bar*/

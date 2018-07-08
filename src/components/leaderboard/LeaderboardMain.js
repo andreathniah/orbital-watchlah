@@ -1,6 +1,8 @@
 import React from "react";
 import base from "../../base";
 import LeaderboardItem from "./LeaderboardItem";
+import "./LeaderboardMain.css";
+import "./grid.css";
 
 class LeaderboardMain extends React.Component {
 	state = {
@@ -74,12 +76,12 @@ class LeaderboardMain extends React.Component {
 					addToBox={addToBox}
 					removeFromBox={removeFromBox}
 					editGlobalVote={this.editGlobalVote}
-				/>
+				/>				
 			);
 		});
 
 		return (
-			<div>
+			<div className="main">
 				<div>{this.state.start ? leaderboardItem : null}</div>
 			</div>
 		);

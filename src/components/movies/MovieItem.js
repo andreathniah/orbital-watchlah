@@ -39,7 +39,7 @@ class MovieItem extends React.Component {
 			) : null;
 
 		return (
-			<div>
+			<section className = "row">
 				<MovieCard details={dataDetails} />
 				<PollStatus
 					index={index}
@@ -49,7 +49,7 @@ class MovieItem extends React.Component {
 					toggle={toggle}
 				/>
 				{voteItem}
-			</div>
+			</section>
 		);
 	}
 }

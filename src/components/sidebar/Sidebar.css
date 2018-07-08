@@ -29,7 +29,10 @@ a {
 }
 
 .logo{
-	text-align: center;
+	display: block;
+	width: 60%;
+	height: auto;
+	margin: 20% auto;
 }
 
 a:hover,

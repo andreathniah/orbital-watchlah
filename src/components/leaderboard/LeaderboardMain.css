@@ -1,8 +1,8 @@
-.movieMain{
-	width: 70%;
+.main{
+	width: 75%;
 	position: absolute;
 	left: 25%;
-	right: 5%;
 	margin-top: 5%;
 	font-family: 'Lato', sans-serif;
+	overflow: hidden;
 }

@@ -1,9 +1,9 @@
-.DeleteButton {
+.minus {
 	width: 30px;
 	height: 30px;
 	background-color: white;
 	border-radius: 50%;
-	margin-right: 40px;
+	margin-right: 5%;
 	color: orange;
 	border: 1px solid orange;
 	float: right;
