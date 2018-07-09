@@ -89,11 +89,15 @@ class ItemVote extends React.Component {
 		return (
 			<div>
 				<button className="upCSS2" type="button" onClick={this.onClickUpvote}>
-						<i class="fas fa-caret-up fa-2x"></i>
+					<i className="fas fa-caret-up fa-2x" />
 				</button>
 				<span className="votes">{this.state.globalvote}</span>
-				<button className="downCSS2" type="button" onClick={this.onClickDownvote}>
-						<i class="fas fa-caret-down fa-2x"></i>
+				<button
+					className="downCSS2"
+					type="button"
+					onClick={this.onClickDownvote}
+				>
+					<i className="fas fa-caret-down fa-2x" />
 				</button>
 			</div>
 		);

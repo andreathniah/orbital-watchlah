@@ -2,6 +2,7 @@ import React from "react";
 import base from "../../base";
 import PollMain from "./PollMain";
 import Sidebar from "../sidebar/Sidebar";
+import "./Polls.css";
 
 class Polls extends React.Component {
 	state = {
@@ -52,7 +53,7 @@ class Polls extends React.Component {
 						removeFromBox={this.removeFromBox}
 						toggle={this.toggle}
 					/>
-					<PollMain user="admin" match={this.props.match} />;
+					<PollMain user="admin" match={this.props.match} />
 				</div>
 			</div>
 		);

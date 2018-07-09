@@ -29,7 +29,9 @@ class PollItem extends React.Component {
 
 	render() {
 		const {
-			details,
+			memberbox,
+			roombox,
+			userbox,
 			index,
 			user,
 			roomId,
@@ -38,11 +40,14 @@ class PollItem extends React.Component {
 			toggleDetails
 		} = this.props;
 
-		var status =
-			typeof this.props.details !== "undefined" ? details.Status : false;
+		var status = typeof memberbox !== "undefined" ? memberbox.Status : false;
+
+		const totalMember = Object.keys(userbox).length;
+		const totalVotes = roombox.Votes;
+		var percentage = (totalVotes / totalMember) * 100;
 
 		return (
-			<div>
+			<div className="flex-row">
 				<PollButton
 					user={user}
 					index={index}
@@ -51,7 +56,12 @@ class PollItem extends React.Component {
 					upvoteMovie={upvoteMovie}
 					downvoteMovie={downvoteMovie}
 				/>
-				<PollBar details={this.state.moviebox} toggleDetails={toggleDetails} />
+				<PollBar
+					moviebox={this.state.moviebox}
+					roombox={roombox}
+					percentage={percentage}
+					toggleDetails={toggleDetails}
+				/>
 			</div>
 		);
 	}
