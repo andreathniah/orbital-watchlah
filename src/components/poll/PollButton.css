@@ -1,12 +1,4 @@
-#poll-item{
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.addBtn {
-	position: relative;
-	bottom: 50px;
-	margin-left: 60%;
+.PollBtn{
 	width: 40px;
 	height: 40px;
 	text-decoration: none;
@@ -14,17 +6,13 @@
 	border: solid 3px orange;
 	background-color: white;
 	color: orange;
+	margin: 2% 1% 2% 1%;
+	font-size: 30px;
 }
 
-
-.addBtn:hover,
-.addBtn:active {
+.PollBtn:hover,
+.PollBtn:active {
 	border: solid 3px white;
 	background-color: orange;
 	color: white;
-}
-
-.addBtnBox{
-	float: right;
-	margin-right: 7%;
 }

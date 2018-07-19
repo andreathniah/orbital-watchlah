@@ -3,6 +3,7 @@ import base from "../../base";
 import PollItem from "./PollItem";
 import PollHeader from "./PollHeader";
 import MovieCard from "../movies/MovieCard";
+import "./PollMain.css";
 
 class PollMain extends React.Component {
 	state = {
@@ -96,8 +97,8 @@ class PollMain extends React.Component {
 		});
 
 		return (
-			<div>
-				<PollHeader roomId={match.params.roomId} details={userbox} />
+			<div className = "main">
+				<PollHeader roomId={match.params.roomId} details={userbox}/>
 				<div>{items}</div>
 				<div>{display ? <MovieCard details={displaybox} /> : null}</div>
 			</div>

@@ -53,7 +53,7 @@ class Polls extends React.Component {
 						removeFromBox={this.removeFromBox}
 						toggle={this.toggle}
 					/>
-					<PollMain user="admin" match={this.props.match} />
+					<PollMain user="admin" match={this.props.match}/>
 				</div>
 			</div>
 		);

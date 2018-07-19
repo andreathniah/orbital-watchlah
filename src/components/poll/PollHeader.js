@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./PollHeader.css";
 
 class PollHeader extends React.Component {
 	state = {
@@ -17,13 +18,13 @@ class PollHeader extends React.Component {
 
 		return (
 			<div>
-				<div>
+				<div className = "addBorder">
 					<h2>{roomId}</h2>
 					<p>
-						Sharable Link: <Link to={`/${roomId}/share`}>/{roomId}/share</Link>
+						Sharable Link: <Link to={`/${roomId}/share`} className="link">/{roomId}/share</Link>
 					</p>
 				</div>
-				<div onClick={this.displayMembers}>
+				<div onClick={this.displayMembers}  className="centre">
 					<h3>{noMembers}</h3>
 					Member(s)
 				</div>

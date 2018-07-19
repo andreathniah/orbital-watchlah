@@ -1,0 +1,47 @@
+@media only screen and (max-width: 1200px){
+	
+}
+
+@media only screen and (max-width: 1023px){
+	.SideBarContent {
+		text-align: left;
+		margin-top: 70px;
+		margin-left: 10%;
+		font-weight: 680;
+		font-size: 20px;
+		text-decoration: none;
+		color: white;
+		border-radius: 20%;
+	}
+}
+
+@media only screen and (max-width: 767px){
+	.addBtn {
+		display: none;
+	}
+	
+	.voteBar,
+	.votes{
+		display: none;
+	}
+	
+	.SideBarContent {
+		display: none;
+	}
+	
+	.main{
+		left: 0%;
+	}
+	
+	.addBtn2{
+		width: 30px;
+		height: 30px;
+	}
+}
+
+@media only screen and (max-width: 480px){
+	.main{
+		left: 0%;
+	}
+}
+

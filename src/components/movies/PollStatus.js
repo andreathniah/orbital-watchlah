@@ -1,6 +1,6 @@
 import React from "react";
 import { firebaseApp } from "../../base";
-import "./PollStatus.css";
+import './PollStatus.css';
 
 class PollStatus extends React.Component {
 	state = {
@@ -44,16 +44,10 @@ class PollStatus extends React.Component {
 		}
 	};
 	render() {
-		const status = this.state.status ? (
-			<i className="fas fa-check" />
-		) : (
-			<i className="fas fa-plus" />
-		);
+		const status = this.state.status ? <i class="fas fa-check"></i> : <i class="fas fa-plus"></i>;
 		return (
 			<div className="addBtnBox">
-				<button onClick={this.onClickAdd} className="addBtn2">
-					{status}
-				</button>
+				<button onClick={this.onClickAdd} className="addBtn2">{status}</button>
 			</div>
 		);
 	}

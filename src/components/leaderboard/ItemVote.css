@@ -30,7 +30,9 @@
 }
 
 .middle{
-	margin-left: 110px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .votes{
@@ -39,8 +41,8 @@
 	font-size: 25px;
 	position: relative;
 	bottom: 3px;
-	margin-left: 40px;
-	margin-right: 40px;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 /*centralise, change the middle, align the bar*/

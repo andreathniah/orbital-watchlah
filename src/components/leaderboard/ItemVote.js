@@ -1,5 +1,6 @@
 import React from "react";
 import "./ItemVote.css";
+import "./responsive.css";
 
 class ItemVote extends React.Component {
 	state = {
@@ -90,15 +91,11 @@ class ItemVote extends React.Component {
 			<div className="voteBar">
 				<div className="middle">
 					<button className="upCSS" type="button" onClick={this.onClickUpvote}>
-						<i className="fas fa-caret-up fa-2x" />
+						<i class="fas fa-caret-up fa-2x"></i>
 					</button>
 					<span className="votes">{this.state.globalvote}</span>
-					<button
-						className="downCSS"
-						type="button"
-						onClick={this.onClickDownvote}
-					>
-						<i className="fas fa-caret-down fa-2x" />
+					<button className="downCSS" type="button" onClick={this.onClickDownvote}>
+						<i class="fas fa-caret-down fa-2x"></i>
 					</button>
 				</div>
 			</div>

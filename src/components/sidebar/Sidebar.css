@@ -1,5 +1,5 @@
 a {
-	color: inherit;
+	color: white;
 	text-decoration: none;
 }
 
@@ -20,7 +20,7 @@ a {
 .SideBarContent {
 	text-align: left;
 	margin-top: 70px;
-	margin-left: 35px;
+	margin-left: 5%;
 	font-weight: 680;
 	font-size: 30px;
 	text-decoration: none;
@@ -37,7 +37,6 @@ a {
 
 a:hover,
 a:active{
-	text-decoration: none;
 	color: white;
 	border-bottom: 3px solid white;
 }
