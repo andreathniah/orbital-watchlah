@@ -37,9 +37,19 @@ class ItemVote extends React.Component {
 			var newVote = globalvote - 1;
 
 			this.setState({
-				globalvote: newVote,
-				upvote: downvote,
-				downvote: downvote
+				globalvote: newVote,			
+				downvote: false,
+				upvote: false
+			});
+		} else if (downvote) {
+			console.log("upvoted " + index);
+			var status = "equal";
+			var newVote = globalvote + 1;
+			
+			this.setState({
+				globalvote: newVote,			
+				downvote: false,
+				upvote: false
 			});
 		} else {
 			console.log("upvoted " + index);
@@ -48,8 +58,8 @@ class ItemVote extends React.Component {
 
 			this.setState({
 				globalvote: newVote,
-				downvote: upvote,
-				upvote: !upvote
+				downvote: false,
+				upvote: true
 			});
 		}
 		this.props.editGlobalVote(index, newVote, status);
@@ -68,8 +78,18 @@ class ItemVote extends React.Component {
 
 			this.setState({
 				globalvote: newVote,
-				downvote: upvote,
-				upvote: upvote
+				downvote: false,
+				upvote: false
+			});
+		} else if (upvote) {
+			console.log("downvoted " + index);
+			var status = "equal";
+			var newVote = globalvote - 1;
+			
+			this.setState({
+				globalvote: newVote,
+				downvote: false,
+				upvote: false
 			});
 		} else {
 			console.log("downvoted " + index);
@@ -78,8 +98,8 @@ class ItemVote extends React.Component {
 
 			this.setState({
 				globalvote: newVote,
-				upvote: downvote,
-				downvote: !downvote
+				downvote: true,
+				upvote: false
 			});
 		}
 		this.props.editGlobalVote(index, newVote, status);
