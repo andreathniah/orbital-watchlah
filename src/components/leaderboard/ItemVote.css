@@ -27,6 +27,8 @@
 	border-top: transparent;
 	width: 78.7%;
 	bottom: 42px;
+	display: block;
+	margin: auto;
 }
 
 .middle{

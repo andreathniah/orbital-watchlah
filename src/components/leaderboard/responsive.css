@@ -16,14 +16,6 @@
 }
 
 @media only screen and (max-width: 767px){
-	.addBtn {
-		display: none;
-	}
-	
-	.voteBar,
-	.votes{
-		display: none;
-	}
 	
 	.SideBarContent {
 		display: none;
