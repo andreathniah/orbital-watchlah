@@ -1,4 +1,5 @@
 import React from "react";
+import "./PollBar.css";
 
 class PollBar extends React.Component {
 	state = { progress: 0 };
@@ -20,7 +21,7 @@ class PollBar extends React.Component {
 		const style = { width: percentage };
 
 		return (
-			<div onClick={this.handleDetails}>
+			<div className="movie" onClick={this.handleDetails}>
 				<div className="progress" data-label={this.props.roombox.Title}>
 					<span className="value" style={style} />
 				</div>
