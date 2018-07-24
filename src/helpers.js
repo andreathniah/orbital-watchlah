@@ -2,6 +2,10 @@ export function rando(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
+export function randomNo(max) {
+	return Math.floor(Math.random() * Math.floor(max));
+}
+
 export function getFunName() {
 	const adjectives = [
 		"adorable",

@@ -23,7 +23,8 @@ class MovieCard extends React.Component {
 						src={Poster}
 						alt={this.props.index}
 						onError={this.onImageError}
-					 className="posters2"/>
+						className="posters2"
+					/>
 				</div>
 				<div className="description">
 					<div>{Released}</div>

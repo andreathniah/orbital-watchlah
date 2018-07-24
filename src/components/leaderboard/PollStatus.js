@@ -1,7 +1,7 @@
 import React from "react";
 import { firebaseApp } from "../../base";
-import './PollStatus.css';
-import './responsive.css';
+import "./PollStatus.css";
+import "./responsive.css";
 
 class PollStatus extends React.Component {
 	state = {
@@ -45,10 +45,16 @@ class PollStatus extends React.Component {
 		}
 	};
 	render() {
-		const status = this.state.status ? <i class="fas fa-check"></i> : <i class="fas fa-plus"></i>;
+		const status = this.state.status ? (
+			<i className="fas fa-check" />
+		) : (
+			<i className="fas fa-plus" />
+		);
 		return (
 			<div>
-				<button onClick={this.onClickAdd} className="addBtn">{status}</button>
+				<button onClick={this.onClickAdd} className="addBtn">
+					{status}
+				</button>
 			</div>
 		);
 	}

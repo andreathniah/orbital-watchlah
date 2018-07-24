@@ -37,7 +37,7 @@ class ItemVote extends React.Component {
 			var newVote = globalvote - 1;
 
 			this.setState({
-				globalvote: newVote,			
+				globalvote: newVote,
 				downvote: false,
 				upvote: false
 			});
@@ -45,9 +45,9 @@ class ItemVote extends React.Component {
 			console.log("upvoted " + index);
 			var status = "equal";
 			var newVote = globalvote + 1;
-			
+
 			this.setState({
-				globalvote: newVote,			
+				globalvote: newVote,
 				downvote: false,
 				upvote: false
 			});
@@ -85,7 +85,7 @@ class ItemVote extends React.Component {
 			console.log("downvoted " + index);
 			var status = "equal";
 			var newVote = globalvote - 1;
-			
+
 			this.setState({
 				globalvote: newVote,
 				downvote: false,
@@ -111,11 +111,15 @@ class ItemVote extends React.Component {
 			<div className="voteBar">
 				<div className="middle">
 					<button className="upCSS" type="button" onClick={this.onClickUpvote}>
-						<i class="fas fa-caret-up fa-2x"></i>
+						<i className="fas fa-caret-up fa-2x" />
 					</button>
 					<span className="votes">{this.state.globalvote}</span>
-					<button className="downCSS" type="button" onClick={this.onClickDownvote}>
-						<i class="fas fa-caret-down fa-2x"></i>
+					<button
+						className="downCSS"
+						type="button"
+						onClick={this.onClickDownvote}
+					>
+						<i className="fas fa-caret-down fa-2x" />
 					</button>
 				</div>
 			</div>

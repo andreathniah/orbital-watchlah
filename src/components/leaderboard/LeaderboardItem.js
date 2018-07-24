@@ -16,6 +16,10 @@ class LeaderboardItem extends React.Component {
 		this.props.addToBox(item, index);
 	};
 
+	onImageError = event => {
+		event.target.src = "/images/default-poster.png";
+	};
+
 	render() {
 		const {
 			details,
@@ -29,14 +33,19 @@ class LeaderboardItem extends React.Component {
 		return (
 			<div className="col span-1-of-3">
 				<div>
-					<img src={details.Poster} alt={details.Title} className="posters"/>
+					<img
+						src={details.Poster}
+						alt={details.Title}
+						onError={this.onImageError}
+						className="posters"
+					/>
 					<PollStatus
 						index={index}
 						addToPoll={this.addToPoll}
 						removeFromBox={removeFromBox}
 						roomId={roomId}
 						toggle={toggle}
-					 />
+					/>
 				</div>
 
 				<div>

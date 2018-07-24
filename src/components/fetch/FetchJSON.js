@@ -3,6 +3,7 @@ import FetchTitles from "./FetchTitles";
 
 import base from "../../base";
 import { firebaseApp } from "../../base";
+import { randomNo } from "../../helpers";
 
 class FetchJSON extends React.Component {
 	state = {
@@ -19,7 +20,8 @@ class FetchJSON extends React.Component {
 			"" +
 			dateObj.getUTCDate() +
 			dateObj.getUTCMonth() +
-			dateObj.getUTCFullYear();
+			dateObj.getUTCFullYear() +
+			1;
 
 		const database = firebaseApp.database().ref("moviebox");
 
@@ -77,9 +79,10 @@ class FetchJSON extends React.Component {
 	createGlobalList = data => {
 		const globalbox = { ...this.state.globalbox };
 		globalbox[data.imdbID] = {
+			Id: data.imdbID,
 			Title: data.Title,
 			Poster: data.Poster,
-			WatchVote: 0,
+			WatchVote: randomNo(1000),
 			UpdateStatus: false
 		};
 		this.setState({ globalbox: globalbox });
@@ -95,6 +98,7 @@ class FetchJSON extends React.Component {
 			const updatedVotes = globalbox[data.imdbID].WatchVote;
 
 			globalbox[data.imdbID] = {
+				Id: data.imdbID,
 				Title: data.Title,
 				WatchVote: updatedVotes,
 				UpdateStatus: true // identified as current showing movies

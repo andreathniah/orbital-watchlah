@@ -52,6 +52,7 @@ class LeaderboardMain extends React.Component {
 		};
 
 		globalbox[index] = {
+			Id: globalbox[index].Id,
 			Title: globalbox[index].Title,
 			Poster: globalbox[index].Poster,
 			UpdateStatus: globalbox[index].UpdateStatus,
@@ -65,20 +66,25 @@ class LeaderboardMain extends React.Component {
 		const { globalbox } = this.state;
 		const { toggle, match, addToBox, removeFromBox } = this.props;
 
-		const leaderboardItem = Object.keys(globalbox).map(id => {
-			return (
-				<LeaderboardItem
-					key={id}
-					index={id}
-					details={globalbox[id]}
-					toggle={toggle}
-					roomId={match.params.roomId}
-					addToBox={addToBox}
-					removeFromBox={removeFromBox}
-					editGlobalVote={this.editGlobalVote}
-				/>				
-			);
-		});
+		const leaderboardItem = Object.entries(globalbox)
+			.map(([key, val]) => val)
+			// .slice(0)
+			.sort((a, b) => b.WatchVote - a.WatchVote)
+			.map(key => {
+				const id = key.Id;
+				return (
+					<LeaderboardItem
+						key={id}
+						index={id}
+						details={globalbox[id]}
+						toggle={toggle}
+						roomId={match.params.roomId}
+						addToBox={addToBox}
+						removeFromBox={removeFromBox}
+						editGlobalVote={this.editGlobalVote}
+					/>
+				);
+			});
 
 		return (
 			<div className="main">
