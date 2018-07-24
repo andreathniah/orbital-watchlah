@@ -20,8 +20,7 @@ class FetchJSON extends React.Component {
 			"" +
 			dateObj.getUTCDate() +
 			dateObj.getUTCMonth() +
-			dateObj.getUTCFullYear() +
-			1;
+			dateObj.getUTCFullYear();
 
 		const database = firebaseApp.database().ref("moviebox");
 

@@ -81,6 +81,16 @@ class PollMain extends React.Component {
 
 		const { user, match } = this.props;
 		const items = Object.keys(roombox).map(id => {
+			if (
+				Object.keys(memberbox).length === 0 &&
+				memberbox.constructor === Object
+			) {
+				var disableStatus = -1;
+			} else {
+				var disableStatus = Object.keys(memberbox).filter(key => key === id);
+				console.log(id, disableStatus.length);
+			}
+
 			return (
 				<PollItem
 					key={id}
@@ -92,13 +102,14 @@ class PollMain extends React.Component {
 					memberbox={memberbox[id]}
 					toggleDetails={this.toggleDetails}
 					upvoteMovie={this.upvoteMovie}
+					disableStatus={disableStatus}
 				/>
 			);
 		});
 
 		return (
-			<div className = "main">
-				<PollHeader roomId={match.params.roomId} details={userbox}/>
+			<div className="main">
+				<PollHeader roomId={match.params.roomId} details={userbox} />
 				<div>{items}</div>
 				<div>{display ? <MovieCard details={displaybox} /> : null}</div>
 			</div>

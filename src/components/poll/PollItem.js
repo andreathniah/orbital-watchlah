@@ -37,10 +37,13 @@ class PollItem extends React.Component {
 			roomId,
 			upvoteMovie,
 			downvoteMovie,
-			toggleDetails
+			toggleDetails,
+			disableStatus
 		} = this.props;
 
 		var status = typeof memberbox !== "undefined" ? memberbox.Status : false;
+		var hello =
+			disableStatus === -1 || index === disableStatus[0] ? false : true;
 
 		const totalMember = Object.keys(userbox).length;
 		const totalVotes = roombox.Votes;
@@ -55,6 +58,7 @@ class PollItem extends React.Component {
 					roomId={roomId}
 					upvoteMovie={upvoteMovie}
 					downvoteMovie={downvoteMovie}
+					disableStatus={hello}
 				/>
 				<PollBar
 					moviebox={this.state.moviebox}

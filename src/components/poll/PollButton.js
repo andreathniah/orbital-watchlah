@@ -9,7 +9,15 @@ class PollButton extends React.Component {
 
 	render() {
 		const status = this.props.status ? " - " : " + ";
-		return <button onClick={this.handleUpvote} className="PollBtn">{status}</button>;
+		return (
+			<button
+				onClick={this.handleUpvote}
+				disabled={this.props.disableStatus}
+				className="PollBtn"
+			>
+				{status}
+			</button>
+		);
 	}
 }
 
