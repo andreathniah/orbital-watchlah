@@ -11,11 +11,25 @@ During casual gatherings, choosing movies often prove to be a chore – especial
 ```
 git clone https://github.com/andreathniah/orbital-watchlah.git
 cd orbital-watchlah
-npm install
-npm start
+yarn install
+cd client
+yarn install
+cd ..
+yarn dev
 ```
 
-Page [@andreathniah](http://www.andreathniah.com/) for secret file containing firebase authentication and OMDapi key.
+[Google's Firebase Realtime Database](https://firebase.google.com/products/realtime-database/) is required. After the set up, create `.env` file at `/client` with the appropriate content from Firebase.
+
+It should follow the format below:
+
+```
+REACT_APP_PROXY_URL=
+REACT_APP_OMD_KEY=
+REACT_APP_MDB_KEY=
+REACT_APP_FIREBASE_KEY=
+REACT_APP_FIREBASE_DOMAIN=
+REACT_APP_FIREBASE_URL=
+```
 
 ## Build With
 
