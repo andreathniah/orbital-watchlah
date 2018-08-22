@@ -1,19 +1,25 @@
 {
-  "name": "watchlah",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "firebase": "^5.0.4",
-    "re-base": "^3.2.3",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+	"name": "site",
+	"engines": {
+		"node": "^8.2.1"
+	},
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"client": "cd client && yarn start",
+		"server": "nodemon server.js",
+		"dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+		"start": "node server.js",
+		"heroku-postbuild":
+			"cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+	},
+	"dependencies": {
+		"express": "^4.16.3"
+	},
+	"devDependencies": {
+		"concurrently": "^3.5.0"
+	},
+	"author": "",
+	"license": "ISC"
 }
