@@ -5,7 +5,7 @@ a {
 
 .SideBar {
 	height: 100vh;
-	width: 20%;	
+	width: 23%;	
 	margin: 0 auto;
 	z-index: 1;
 	top: 0;
@@ -15,6 +15,8 @@ a {
 	padding-top: 20px;
 	position: fixed;
 	font-family: 'Lato', sans-serif;
+	-webkit-transition: width 0.5s;
+	transition: width 0.5s;
 }
 
 .SideBarContent {
@@ -38,11 +40,14 @@ a {
 a:hover,
 a:active{
 	color: white;
-	border-bottom: 3px solid white;
 }
 
 #leaderboard-main {
 	position: absolute;
 	left: 20%;
 	width: 80%;
+}
+
+.fa-bars{
+	color: white;
 }

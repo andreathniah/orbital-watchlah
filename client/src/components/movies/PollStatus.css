@@ -16,10 +16,10 @@
 	font-family: 'Lato', sans-serif;
 }
 
-#poll-item{
-	margin-top: 70px;
-	margin-bottom: 70px;
-	margin-left: 20px;
+.addBtnBox{
+	position: relative;
+	margin-left: 75%;
+	margin-top: -70px;
 }
 
 .addBtn2 {

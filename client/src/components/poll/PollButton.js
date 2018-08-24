@@ -8,7 +8,7 @@ class PollButton extends React.Component {
 	};
 
 	render() {
-		const status = this.props.status ? " - " : " + ";
+		const status = this.props.status ? " - " :  <i className="fas fa-plus plus2" /> ;
 		return (
 			<button
 				onClick={this.handleUpvote}
