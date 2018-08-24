@@ -31,14 +31,16 @@ class LeaderboardItem extends React.Component {
 		} = this.props;
 
 		return (
-			<div className="col span-1-of-3">
-				<div>
+			<div className="col span-1-of-3 container">
+				<div className="cards2">
 					<img
 						src={details.Poster}
 						alt={details.Title}
 						onError={this.onImageError}
 						className="posters"
 					/>
+				</div>
+				
 					<PollStatus
 						index={index}
 						addToPoll={this.addToPoll}
@@ -46,7 +48,6 @@ class LeaderboardItem extends React.Component {
 						roomId={roomId}
 						toggle={toggle}
 					/>
-				</div>
 
 				<div>
 					<ItemVote

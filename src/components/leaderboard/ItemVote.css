@@ -23,9 +23,9 @@
 
 .voteBar{
 	position: relative;
-	border: solid 3px orange;
+	border: solid 1px orange;
 	border-top: transparent;
-	width: 78.7%;
+	width: 80%;
 	bottom: 42px;
 	display: block;
 	margin: auto;

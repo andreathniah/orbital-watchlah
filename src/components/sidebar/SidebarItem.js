@@ -14,7 +14,7 @@ class SidebarItem extends React.Component {
 			<li>
 				{this.props.details.Title}
 				<button onClick={this.onClickRemove} className="minus">
-					<i className="fas fa-minus" />
+					<i className="fas fa-minus minusSign" />
 				</button>
 			</li>
 		);

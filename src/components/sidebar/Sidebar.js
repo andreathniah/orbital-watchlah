@@ -26,6 +26,28 @@ class Sidebar extends React.Component {
 				<div>
 					<img src={logo} className = "logo"/>
 				</div>
+				
+				<div className = "menu">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarsExample02">
+						<ul class="navbar-nav mr-auto subMenu">
+							<li class="nav-item">
+								<Link to={`/${roomId}/leaderboard`}>LEADERBOARD</Link>
+							</li>
+							<li class="nav-item">
+								<Link to={`/${roomId}/movies`}>MOVIE DETAILS</Link>
+							</li>
+							<li class="nav-item">
+								<Link to={`/${roomId}/polls`}>POLLS</Link>
+								{item}
+							</li>
+						</ul>
+					</div>			
+				</div>				
+				
 				<div className = "SideBarContent">
 					<Link to={`/${roomId}/leaderboard`}>LEADERBOARD</Link>
 				</div>
@@ -37,7 +59,7 @@ class Sidebar extends React.Component {
 					{item}
 				</div>
 				<br />
-			</div>
+			</div>		
 		);
 	}
 }

@@ -1,5 +1,5 @@
 .posters2{
-	width: 35%;
+	width: 300px;
 	height: auto;
 	float: left;
 	margin-bottom: 5%;
@@ -14,4 +14,9 @@
 .description{
 	padding: 5%;
 	line-height: 1.5;
+}
+
+.cards{
+	display: block;
+	width: 76%;
 }
